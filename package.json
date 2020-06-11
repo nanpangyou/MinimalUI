@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/nanpangyou/MinimalUI/issues"
   },
-  "homepage": "https://github.com/nanpangyou/MinimalUI#readme"
+  "homepage": "https://github.com/nanpangyou/MinimalUI#readme",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
 }
