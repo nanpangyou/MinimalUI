@@ -5,57 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --button-size: 14px;
-            --button-height: 32px;
-            --button-font-color: #333;
-            --button-bg: #fff;
-            --button-radius: 4px;
-            --button-border: 1px solid #333;
-            --button-hover-border: 1px solid #5db2e7;
-            --button-active-bg: #ccc;
-        }
-
-        body {
-            padding: 3rem;
-        }
-    </style>
-    <style>
-        .m-button {
-            font-size: var(--button-size);
-            height: var(--button-height);
-            color: var(--button-font-color);
-            padding: 0 1rem;
-            border-radius: var(--button-radius);
-            background: var(--button-bg);
-            border: var(--button-border);
-            cursor: pointer;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            vertical-align: middle;
-
-        }
-
-        .m-button:hover {
-            border: var(--button-hover-border);
-        }
-
-        .m-button:active {
-            background: var(--button-active-bg);
-        }
-
-        .m-button:focus {
-            outline: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -64,14 +13,7 @@
         <m-button></m-button>
     </div>
 
-
-    <script src="./node_modules/vue/dist/vue.min.js"></script>
-    <script src="./button.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-        })
-    </script>
+    <script src="./src/app.js"></script>
 </body>
 
 </html>
