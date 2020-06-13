@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import './css/main';
-import Mbutton from './component/button';
+import Mbutton from './component/button/button';
 
 Vue.component("m-button", Mbutton)
 
