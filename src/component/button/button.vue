@@ -1,8 +1,6 @@
 <template>
   <button class="m-button" :class="{[`icon-${iconPosition}`]:true}">
-    <svg v-if="name" class="icon" aria-hidden="true">
-      <use :xlink:href="`#i-${name}`" />
-    </svg>
+    <m-icon :name="name"></m-icon>
     <div class="button-text">
       <slot></slot>
     </div>
@@ -66,17 +64,12 @@ export default {
   &.icon-right {
     > .icon {
       order: 2;
+      margin-left: 0.3em;
+      margin-right: 0;
     }
     > .button-text {
       order: 1;
     }
-  }
-
-  .icon {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    overflow: hidden;
   }
 }
 </style>
