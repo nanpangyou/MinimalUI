@@ -1,5 +1,5 @@
 <template>
-  <svg v-if="name" class="icon" aria-hidden="true">
+  <svg v-if="name" :class="`icon-${name}`" class="icon" aria-hidden="true">
     <use :xlink:href="`#i-${name}`" />
   </svg>
 </template>
@@ -18,6 +18,5 @@ export default {
   height: 1em;
   fill: currentColor;
   overflow: hidden;
-  margin-right: 0.3em;
 }
 </style>
