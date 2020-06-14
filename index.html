@@ -8,11 +8,15 @@
 
   <body>
     <div id="app">
-      <m-button> 按钮</m-button>
-      <m-button name="setting">按钮</m-button>
-      <m-button name="setting" icon-position="right">按钮</m-button>
-      <m-button name="loading" icon-position="right">按钮</m-button>
-      <m-icon name="loading"></m-icon>
+      <m-button :loading="loading1" @click="loading1= !loading1">
+        按钮</m-button
+      >
+      <m-button name="setting" :loading="loading2" @click="loading2= !loading2"
+        >按钮</m-button
+      >
+      <m-button name="setting" :loading="loading3" icon-position="right"
+        >按钮
+      </m-button>
     </div>
 
     <script src=" ./src/component/icon/svg.js"></script>
