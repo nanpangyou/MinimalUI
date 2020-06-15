@@ -1,10 +1,12 @@
 import Vue from "vue";
 import "./css/main";
-import Mbutton from "./component/button/button";
-import Micon from "./component/icon/icon";
+import MButton from "./component/button/button";
+import MIcon from "./component/icon/icon";
+import MButtonGroup from './component/button-group/button-group'
 
-Vue.component("m-button", Mbutton);
-Vue.component("m-icon", Micon);
+Vue.component("m-button", MButton);
+Vue.component("m-icon", MIcon);
+Vue.component("m-button-group",MButtonGroup)
 
 let app = new Vue({
   el: "#app",
@@ -22,7 +24,7 @@ chai.use(spies);
   // 测试button是否含有name属性
   const div = document.createElement("div");
   document.body.appendChild(div);
-  const Constructor = Vue.extend(Mbutton);
+  const Constructor = Vue.extend(MButton);
   const vm = new Constructor({
     propsData: {
       name: "setting"
@@ -38,7 +40,7 @@ chai.use(spies);
   //测试button是否可以传loading
   const div = document.createElement("div");
   document.body.appendChild(div);
-  const Constructor = Vue.extend(Mbutton);
+  const Constructor = Vue.extend(MButton);
   const vm = new Constructor({
     propsData: {
       name: "setting",
@@ -58,7 +60,7 @@ chai.use(spies);
   // 测试iconPositon属性(icon在左侧)
   const div = document.createElement("div");
   document.body.appendChild(div);
-  const Constructor = Vue.extend(Mbutton);
+  const Constructor = Vue.extend(MButton);
   const vm = new Constructor({
     propsData: {
       name: "setting",
@@ -75,7 +77,7 @@ chai.use(spies);
   // 测试iconPositon属性(icon在右侧)
   const div = document.createElement("div");
   document.body.appendChild(div);
-  const Constructor = Vue.extend(Mbutton);
+  const Constructor = Vue.extend(MButton);
   const vm = new Constructor({
     propsData: {
       name: "setting",
@@ -93,7 +95,7 @@ chai.use(spies);
   // 测试按钮点击
   const div = document.createElement("div");
   document.body.appendChild(div);
-  const Constructor = Vue.extend(Mbutton);
+  const Constructor = Vue.extend(MButton);
   const vm = new Constructor({
     propsData: {
       name: "setting",
