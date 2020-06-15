@@ -105,4 +105,6 @@ chai.use(spies);
   vm.$on("click", spy);
   vm.$el.click();
   expect(spy).have.been.called();
+  vm.$el.remove();
+  vm.$destroy()
 }
