@@ -13,7 +13,13 @@
 </template>
 
 <script>
+import Vue from "vue";
+import mIcon from "../icon/icon";
 export default {
+  name: "m-button",
+  components: {
+    mIcon
+  },
   props: {
     name: {
       type: String

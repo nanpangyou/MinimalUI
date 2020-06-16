@@ -4,7 +4,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: "m-button-group"
+};
 </script>
 <style lang="scss">
 .button-group {

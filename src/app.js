@@ -2,11 +2,11 @@ import Vue from "vue";
 import "./css/main";
 import MButton from "./component/button/button";
 import MIcon from "./component/icon/icon";
-import MButtonGroup from './component/button-group/button-group'
+import MButtonGroup from "./component/button-group/button-group";
 
 Vue.component("m-button", MButton);
 Vue.component("m-icon", MIcon);
-Vue.component("m-button-group",MButtonGroup)
+Vue.component("m-button-group", MButtonGroup);
 
 let app = new Vue({
   el: "#app",
@@ -102,11 +102,11 @@ chai.use(spies);
       loading: true,
       iconPosition: "right"
     }
-  }).$mount(div);  //测试点击的时候必须要挂载到页面上
+  }).$mount(div); //测试点击的时候必须要挂载到页面上
   const spy = chai.spy(() => {});
   vm.$on("click", spy);
   vm.$el.click();
   expect(spy).have.been.called();
   vm.$el.remove();
-  vm.$destroy()
+  vm.$destroy();
 }
