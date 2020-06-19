@@ -8,7 +8,7 @@ export default {
   name: "m-button-group"
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .button-group {
   display: inline-flex;
   vertical-align: middle;

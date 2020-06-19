@@ -4,28 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .box {
+        margin-bottom: 2em;
+      }
+    </style>
   </head>
 
   <body>
     <div id="app">
-      <m-button :loading="loading1" @click="loading1= !loading1">
-        按钮</m-button
-      >
-      <m-button name="setting" :loading="loading2" @click="loading2= !loading2"
-        >按钮</m-button
-      >
-      <m-button
-        name="setting"
-        :loading="loading3"
-        icon-position="right"
-        @click="loading3= !loading3"
-        >按钮
-      </m-button>
-      <m-button-group>
-        <m-button name="left">上一页</m-button>
-        <m-button>更多</m-button>
-        <m-button name="right" icon-position="right">下一页</m-button>
-      </m-button-group>
+      <div class="box">
+        <m-button :loading="loading1" @click="loading1= !loading1">
+          按钮</m-button
+        >
+        <m-button
+          name="setting"
+          :loading="loading2"
+          @click="loading2= !loading2"
+          >按钮</m-button
+        >
+        <m-button
+          name="setting"
+          :loading="loading3"
+          icon-position="right"
+          @click="loading3= !loading3"
+          >按钮
+        </m-button>
+        <m-button-group>
+          <m-button name="left">上一页</m-button>
+          <m-button>更多</m-button>
+          <m-button name="right" icon-position="right">下一页</m-button>
+        </m-button-group>
+      </div>
+      <div class="box">
+        <m-input></m-input>
+        <m-input :value="message"></m-input>
+        <m-input :value="message" readonly></m-input>
+        <m-input :value="message" disabled></m-input>
+        <m-input :value="message" error="你错了"></m-input>
+        <div>
+          {{message}}
+        </div>
+      </div>
     </div>
     <script src="./src/app.js"></script>
   </body>

@@ -3,17 +3,20 @@ import "./css/main";
 import MButton from "./component/button/button";
 import MIcon from "./component/icon/icon";
 import MButtonGroup from "./component/button-group/button-group";
+import MInput from "./component/input/input";
 
 Vue.component("m-button", MButton);
 Vue.component("m-icon", MIcon);
 Vue.component("m-button-group", MButtonGroup);
+Vue.component("m-input", MInput);
 
 let app = new Vue({
   el: "#app",
   data: {
     loading1: false,
     loading2: false,
-    loading3: false
+    loading3: false,
+    message: "value2"
   }
 });
 
