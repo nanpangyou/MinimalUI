@@ -65,6 +65,8 @@ describe("", () => {
   describe("事件部分", () => {
     let Constructor;
     let vm;
+    const triggerWithValueEventList = ["input"];
+    const triggerWithoutValueEventList = ["change", "focus", "blur"];
     beforeEach(() => {
       Constructor = Vue.extend(Input);
       vm = new Constructor({}).$mount();
@@ -72,43 +74,31 @@ describe("", () => {
     afterEach(() => {
       vm.$destroy();
     });
-    it("触发input事件", () => {
-      let callback = sinon.fake();
-      vm.$on("input", callback);
-      let inputElement = vm.$el.querySelector("input");
-      let event = new Event("input");
-      //创建拥有target的event
-      Object.defineProperty(event, "target", {
-        value: { value: "hi" },
-        enumerable: true
+    triggerWithValueEventList.map((item) => {
+      it(`触发${item}事件`, () => {
+        const callback = sinon.fake();
+        vm.$on(item, callback);
+        let inputElement = vm.$el.querySelector("input");
+        let event = new Event(item);
+        //创建拥有target的event
+        Object.defineProperty(event, "target", {
+          value: { value: "hi" },
+          enumerable: true
+        });
+        inputElement.dispatchEvent(event);
+        expect(callback).to.have.been.called;
+        expect(callback).to.have.been.calledWith("hi");
       });
-      inputElement.dispatchEvent(event);
-      expect(callback).to.have.been.called;
-      expect(callback).to.have.been.calledWith("hi");
     });
-    it("触发change事件", () => {
-      let callback = sinon.fake();
-      vm.$on("change", callback);
-      let inputElement = vm.$el.querySelector("input");
-      let event = new Event("change");
-      inputElement.dispatchEvent(event);
-      expect(callback).to.have.been.called;
-    });
-    it("触发blur事件", () => {
-      let callback = sinon.fake();
-      vm.$on("blur", callback);
-      let inputElement = vm.$el.querySelector("input");
-      let event = new Event("blur");
-      inputElement.dispatchEvent(event);
-      expect(callback).to.have.been.called;
-    });
-    it("触发focus事件", () => {
-      let callback = sinon.fake();
-      vm.$on("focus", callback);
-      let inputElement = vm.$el.querySelector("input");
-      let event = new Event("focus");
-      inputElement.dispatchEvent(event);
-      expect(callback).to.have.been.called;
+    triggerWithoutValueEventList.map((item) => {
+      it(`触发${item}事件`, () => {
+        let callback = sinon.fake();
+        vm.$on(item, callback);
+        let inputElement = vm.$el.querySelector("input");
+        let event = new Event(item);
+        inputElement.dispatchEvent(event);
+        expect(callback).to.have.been.called;
+      });
     });
   });
 });
