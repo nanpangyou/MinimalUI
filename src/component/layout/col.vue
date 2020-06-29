@@ -2,6 +2,7 @@
   <div
     class="m-col"
     :class="[span && `m-col-${span}`, offset && `m-col-offset-${offset}`]"
+    :style="gutterStyle"
   >
     <slot></slot>
   </div>
@@ -14,6 +15,22 @@ export default {
     },
     offset: {
       type: Number
+    }
+  },
+  data() {
+    return {
+      gutter: this.gutter
+    };
+  },
+  mounted() {
+    console.log("zi");
+    console.log(this.gutter);
+  },
+  computed: {
+    gutterStyle() {
+      const halfGutter = this.gutter / 2;
+      console.log(this.gutter);
+      return this.gutter ? `margin: 0 ${halfGutter}px` : "";
     }
   }
 };

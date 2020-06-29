@@ -1,10 +1,30 @@
 <template>
-  <div class="m-row">
+  <div class="m-row" :style="gutterStyle">
     <slot></slot>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    gutter: {
+      type: Number
+    }
+  },
+  mounted() {
+    console.log("fu");
+    console.log(this.$children, this.gutter);
+    this.$children.map((i) => (i.gutter = this.gutter));
+  },
+  computed: {
+    gutterStyle() {
+      const gutter = this.gutter;
+      const halfGutter = gutter / 2;
+      return gutter
+        ? `margin-left:-${gutter}px; margin-right:-${gutter}px; padding:0 ${halfGutter}px;`
+        : "";
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .m-row {
