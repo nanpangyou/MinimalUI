@@ -4,8 +4,8 @@ import MButton from "./component/button/button";
 import MIcon from "./component/icon/icon";
 import MButtonGroup from "./component/button-group/button-group";
 import MInput from "./component/input/input";
-import MRow from "./component/layout/row";
-import MCol from "./component/layout/col";
+import MRow from "./component/grid/row";
+import MCol from "./component/grid/col";
 
 Vue.component("m-button", MButton);
 Vue.component("m-icon", MIcon);

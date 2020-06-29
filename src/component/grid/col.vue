@@ -9,20 +9,16 @@
 export default {
   props: {
     span: {
-      type: Number
+      type: [Number, String]
     },
     offset: {
-      type: Number
+      type: [Number, String]
     }
   },
   data() {
     return {
       gutter: this.gutter
     };
-  },
-  mounted() {
-    console.log("zi");
-    console.log(this.gutter);
   },
   computed: {
     gutterStyle() {
