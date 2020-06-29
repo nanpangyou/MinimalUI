@@ -1,8 +1,5 @@
 <template>
-  <div 
-    class="m-row" 
-    :style='gutterStyle'
-  >
+  <div class="m-row" :style="gutterStyle">
     <slot></slot>
   </div>
 </template>
@@ -32,7 +29,6 @@ export default {
 <style lang="scss" scoped>
 .m-row {
   height: 60px;
-  line-height: 60px;
   display: flex;
 }
 </style>
