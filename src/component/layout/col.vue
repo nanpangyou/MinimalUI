@@ -4,7 +4,9 @@
     :class="[span && `m-col-${span}`, offset && `m-col-offset-${offset}`]"
     :style="gutterStyle"
   >
+    <div  style="background:#eee;">
     <slot></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -29,8 +31,7 @@ export default {
   computed: {
     gutterStyle() {
       const halfGutter = this.gutter / 2;
-      console.log(this.gutter);
-      return this.gutter ? `margin: 0 ${halfGutter}px` : "";
+      return this.gutter ? `padding: 0 ${halfGutter}px` : "";
     }
   }
 };
@@ -38,7 +39,6 @@ export default {
 <style lang="scss" scoped>
 .m-col {
   width: 50%;
-  border: 1px solid orangered;
   @for $i from 1 through 24 {
     &.m-col-#{$i} {
       width: ($i/24) * 100%;

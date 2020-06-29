@@ -1,5 +1,8 @@
 <template>
-  <div class="m-row" :style="gutterStyle">
+  <div 
+    class="m-row" 
+    :style='gutterStyle'
+  >
     <slot></slot>
   </div>
 </template>
@@ -20,7 +23,7 @@ export default {
       const gutter = this.gutter;
       const halfGutter = gutter / 2;
       return gutter
-        ? `margin-left:-${gutter}px; margin-right:-${gutter}px; padding:0 ${halfGutter}px;`
+        ? `margin-left:-${halfGutter}px; margin-right:-${halfGutter}px;`
         : "";
     }
   }
@@ -31,6 +34,5 @@ export default {
   height: 60px;
   line-height: 60px;
   display: flex;
-  border: 1px solid aquamarine;
 }
 </style>
