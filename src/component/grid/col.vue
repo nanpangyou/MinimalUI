@@ -1,8 +1,6 @@
 <template>
   <div class="m-col" :class="colClass" :style="gutterStyle">
-    <div style="background:#eee;border: 1px solid maroon;height: 60px;">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 <script>

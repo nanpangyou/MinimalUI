@@ -1,5 +1,5 @@
 <template>
-  <div class="m-row" :style="gutterStyle" :class="[align && `align-${align}`]">
+  <div class="m-row" :style="gutterStyle" :class="alignClass">
     <slot></slot>
   </div>
 </template>
@@ -32,6 +32,10 @@ export default {
       return gutter
         ? `margin-left:-${halfGutter}px; margin-right:-${halfGutter}px;`
         : "";
+    },
+    alignClass() {
+      const { align } = this;
+      return [align && `align-${align}`];
     }
   }
 };
