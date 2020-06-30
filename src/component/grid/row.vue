@@ -11,8 +11,9 @@ export default {
     },
     align: {
       type: String,
+      default: "left",
       validator(value) {
-        const result = ["left", "right", "center"].includes(value)
+        ["left", "right", "center"].includes(value)
           ? ""
           : console.error(
               `align的值必须为left,right,center中的一个，现在为${value}`
@@ -37,8 +38,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .m-row {
-  height: 60px;
   display: flex;
+  flex-wrap: wrap;
   &.align-right {
     justify-content: flex-end;
   }
