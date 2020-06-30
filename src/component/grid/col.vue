@@ -34,7 +34,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .m-col {
-  width: 50%;
   @for $i from 1 through 24 {
     &.m-col-#{$i} {
       width: ($i/24) * 100%;

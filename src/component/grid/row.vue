@@ -12,12 +12,12 @@ export default {
     align: {
       type: String,
       validator(value) {
-        const result = ["left", "right", "middle"].includes(value)
+        const result = ["left", "right", "center"].includes(value)
           ? ""
           : console.error(
-              `align的值必须为left,right,middle中的一个，现在为${value}`
+              `align的值必须为left,right,center中的一个，现在为${value}`
             );
-        return ["left", "right", "middle"].includes(value);
+        return ["left", "right", "center"].includes(value);
       }
     }
   },
@@ -40,10 +40,13 @@ export default {
   height: 60px;
   display: flex;
   &.align-right {
-    text-align: right;
+    justify-content: flex-end;
   }
-  &.align-middle {
-    text-align: center;
+  &.align-center {
+    justify-content: center;
+  }
+  &.align-left {
+    justify-content: flex-start;
   }
 }
 </style>
