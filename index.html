@@ -96,6 +96,22 @@
           <m-col :span="3">4</m-col>
         </m-row>
       </div>
+      <h1>Layout</h1>
+      <div class="box">
+        <m-layout style="min-height: 300px;border: 1px solid red;">
+          <m-header style="border:1px solid;">header</m-header>
+          <m-content style="border:1px solid;">content</m-content>
+          <m-footer style="border:1px solid;">footer</m-footer>
+        </m-layout>
+        <m-layout style="min-height: 300px;border: 1px solid red;">
+          <m-header style="border:1px solid;">header</m-header>
+          <m-layout>
+            <m-sider>sider</m-sider>
+            <m-content style="border:1px solid;">content</m-content>
+          </m-layout>
+          <m-footer style="border:1px solid;">footer</m-footer>
+        </m-layout>
+      </div>
     </div>
     <script src="./src/app.js"></script>
   </body>

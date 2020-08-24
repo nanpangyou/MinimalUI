@@ -6,6 +6,11 @@ import MButtonGroup from "./component/button-group/button-group";
 import MInput from "./component/input/input";
 import MRow from "./component/grid/row";
 import MCol from "./component/grid/col";
+import MLayout from "./component/layout/layout";
+import MHeader from "./component/layout/header";
+import MContent from "./component/layout/content";
+import MSider from "./component/layout/sider";
+import MFooter from "./component/layout/footer";
 
 Vue.component("m-button", MButton);
 Vue.component("m-icon", MIcon);
@@ -13,6 +18,11 @@ Vue.component("m-button-group", MButtonGroup);
 Vue.component("m-input", MInput);
 Vue.component("m-row", MRow);
 Vue.component("m-col", MCol);
+Vue.component("m-layout", MLayout);
+Vue.component("m-header", MHeader);
+Vue.component("m-content", MContent);
+Vue.component("m-sider", MSider);
+Vue.component("m-footer", MFooter);
 
 let app = new Vue({
   el: "#app",
