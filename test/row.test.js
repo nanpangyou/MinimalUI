@@ -35,7 +35,7 @@ describe("Row", () => {
       done();
     }, 0);
   });
-  it("可以设置align.", () => {
+  it("可以设置align1.", () => {
     const div = document.createElement("div");
     document.body.appendChild(div);
     const rowConstructor = Vue.extend(Row);
@@ -49,7 +49,7 @@ describe("Row", () => {
     vm.$el.remove();
     vm.$destroy();
   });
-  it("可以设置align.", () => {
+  it("可以设置align2.", () => {
     const div = document.createElement("div");
     document.body.appendChild(div);
     const rowConstructor = Vue.extend(Row);
@@ -63,7 +63,7 @@ describe("Row", () => {
     vm.$el.remove();
     vm.$destroy();
   });
-  it("可以设置align.", () => {
+  it("可以设置align3.", () => {
     const div = document.createElement("div");
     document.body.appendChild(div);
     const rowConstructor = Vue.extend(Row);

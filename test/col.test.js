@@ -8,7 +8,7 @@ Vue.config.devtools = false;
 
 describe("Row", () => {
   it("存在.", () => {
-    expect(Row).to.be.ok;
+    expect(Col).to.be.ok;
   });
   it("可以设置gutter.", (done) => {
     Vue.component("m-row", Row);
@@ -35,41 +35,36 @@ describe("Row", () => {
       done();
     }, 0);
   });
-  it("可以设置align.", () => {
+  it("可以设置span.", () => {
     const div = document.createElement("div");
     document.body.appendChild(div);
-    const rowConstructor = Vue.extend(Row);
+    const rowConstructor = Vue.extend(Col);
     const vm = new rowConstructor({
       propsData: {
-        align: "center"
+        span: "6"
       }
     }).$mount(div);
-    const rowDom = document.querySelector(".m-row");
-    expect(getComputedStyle(rowDom).justifyContent).to.eq("center");
+    const colDom = document.querySelector(".m-col");
+    expect(colDom.getAttribute("class").includes("m-col-6")).to.be.true;
     vm.$el.remove();
     vm.$destroy();
   });
-  it("可以设置align.", () => {
+  it("可以设置xs.", () => {
     const div = document.createElement("div");
     document.body.appendChild(div);
-    const rowConstructor = Vue.extend(Row);
+    const rowConstructor = Vue.extend(Col);
     const vm = new rowConstructor({
       propsData: {
-        align: "right"
+        xs: {
+          span: 3,
+          offset: 5
+        }
       }
     }).$mount(div);
-    const rowDom = document.querySelector(".m-row");
-    expect(getComputedStyle(rowDom).justifyContent).to.eq("flex-end");
-    vm.$el.remove();
-    vm.$destroy();
-  });
-  it("可以设置align.", () => {
-    const div = document.createElement("div");
-    document.body.appendChild(div);
-    const rowConstructor = Vue.extend(Row);
-    const vm = new rowConstructor({}).$mount(div);
-    const rowDom = document.querySelector(".m-row");
-    expect(getComputedStyle(rowDom).justifyContent).to.eq("flex-start");
+    const colDom = document.querySelector(".m-col");
+    expect(colDom.getAttribute("class").includes("m-xs-col-3")).to.be.true;
+    expect(colDom.getAttribute("class").includes("m-xs-col-offset-5")).to.be
+      .true;
     vm.$el.remove();
     vm.$destroy();
   });
