@@ -7,7 +7,7 @@
 export default {
   props: {
     gutter: {
-      type: [Number, String]
+      type: [Number, String],
     },
     align: {
       type: String,
@@ -19,8 +19,8 @@ export default {
               `align的值必须为left,right,center中的一个，现在为${value}`
             );
         return ["left", "right", "center"].includes(value);
-      }
-    }
+      },
+    },
   },
   mounted() {
     this.$children.map((i) => (i.gutter = this.gutter));
@@ -36,14 +36,14 @@ export default {
     alignClass() {
       const { align } = this;
       return [align && `align-${align}`];
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .m-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   &.align-right {
     justify-content: flex-end;
   }

@@ -6,8 +6,8 @@ module.exports = {
   ],
   themeConfig: {
     logo: '/MinimalUI-logo.png',
-    search: false,
-    // navbar: false,
+    search: false,  //设置nav中的搜索框是否显示
+    // navbar: false, //设置nav是否显示
     // nav: [
     //   { text: 'Home', link: '/' },
     //   { text: 'Get Started', link: '/get-started/' },
@@ -36,7 +36,19 @@ module.exports = {
         children: [
           {
             title: 'Button',
-            path: '/button/'
+            path: '/components/button/'
+          },
+          {
+            title: 'Button Group',
+            path: '/components/button-group/'
+          },
+          {
+            title: 'Input',
+            path: '/components/input/'
+          },
+          {
+            title: 'Grid',
+            path: '/components/grid/'
           }
         ],
         initialOpenGroupIndex: -1 // 可选的, 默认值是 0

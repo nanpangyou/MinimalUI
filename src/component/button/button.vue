@@ -18,11 +18,11 @@ import mIcon from "../icon/icon";
 export default {
   name: "m-button",
   components: {
-    mIcon
+    mIcon,
   },
   props: {
     name: {
-      type: String
+      type: String,
     },
     iconPosition: {
       tpye: String,
@@ -30,10 +30,10 @@ export default {
       validator(value) {
         // 这个值必须匹配下列字符串中的一个
         return ["left", "right"].indexOf(value) !== -1;
-      }
+      },
     },
-    loading: {}
-  }
+    loading: {},
+  },
 };
 </script>
 
@@ -46,14 +46,22 @@ export default {
     transform: rotate(360deg);
   }
 }
+$button-size: 14px;
+$button-height: 32px;
+$button-font-color: #333;
+$button-bg: #fff;
+$button-radius: 4px;
+$button-border: 1px solid #888;
+$button-hover-border: 1px solid #222;
+$button-active-bg: #eee;
 .m-button {
-  font-size: var(--button-size);
-  height: var(--button-height);
-  color: var(--button-font-color);
+  font-size: $button-size;
+  height: $button-height;
+  color: $button-font-color;
   padding: 0 1rem;
-  border-radius: var(--button-radius);
-  background: var(--button-bg);
-  border: var(--button-border);
+  border-radius: $button-radius;
+  background: $button-bg;
+  border: $button-border;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -61,11 +69,11 @@ export default {
   vertical-align: middle;
 
   &:hover {
-    border: var(--button-hover-border);
+    border: $button-hover-border;
   }
 
   &:active {
-    background: var(--button-active-bg);
+    background: $button-active-bg;
   }
 
   &:focus {
