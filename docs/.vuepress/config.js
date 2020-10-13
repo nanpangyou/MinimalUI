@@ -49,6 +49,10 @@ module.exports = {
           {
             title: 'Grid',
             path: '/components/grid/'
+          },
+          {
+            title: 'Layout',
+            path: '/components/layout/'
           }
         ],
         initialOpenGroupIndex: -1 // 可选的, 默认值是 0

@@ -4,7 +4,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: "m-sider",
+};
 </script>
 <style lang="scss" scoped>
 .m-sider {
