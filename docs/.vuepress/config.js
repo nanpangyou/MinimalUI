@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/minimalui/',
+  base: '/MinimalUI/',
   title: 'MinimalUI',
   description: 'MinimalUI 是一个基于 Vue 的简约UI库',  //seo
   head: [
