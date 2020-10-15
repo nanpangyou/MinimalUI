@@ -6,7 +6,9 @@ title: Button Group
 
 示例:
 
-<Button-Group-button-group-demos />
+<ClientOnly>
+  <Button-Group-button-group-demos />
+</ClientOnly>
 
 ---
 

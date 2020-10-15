@@ -1,9 +1,9 @@
 # layout
 
 示例: 
-
-<Layout-layout-demos />
-
+<ClientOnly>
+    <Layout-layout-demos />
+</ClientOnly>
 ```js
 import {MLayout,MHeader,MContent,MSider,MFooter} from "minimalui";
 export default {

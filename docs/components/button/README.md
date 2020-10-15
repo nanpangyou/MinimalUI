@@ -6,7 +6,9 @@ title: Button
 
 示例
 
-<Button-button-demos/>
+<ClientOnly>
+  <Button-button-demos/>
+</ClientOnly>
 
 ---
 

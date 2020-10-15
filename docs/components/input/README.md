@@ -1,8 +1,9 @@
 # Input
 
 示例:
-
-<Input-input-demos />
+<ClientOnly>
+  <Input-input-demos />
+</ClientOnly>
 
 ---
 

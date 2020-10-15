@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/minimalui/',
   title: 'MinimalUI',
   description: 'MinimalUI 是一个基于 Vue 的简约UI库',  //seo
   head: [
@@ -33,6 +34,7 @@ module.exports = {
         title: '组件',
         path: '/components/',
         sidebarDepth: 2,
+        collapsable: false,
         children: [
           {
             title: 'Button',

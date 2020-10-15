@@ -2,7 +2,10 @@
 
 示例: 
 
-<Grid-grid-demos />
+<ClientOnly>
+  <Grid-grid-demos />
+</ClientOnly>
+
 ```js
 import { MRow, MCol } from "minimalui";
 export default {
