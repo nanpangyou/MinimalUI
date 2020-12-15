@@ -8775,7 +8775,7 @@ sinon-chai@^3.5.0:
   resolved "https://registry.npm.taobao.org/sinon-chai/download/sinon-chai-3.5.0.tgz#c9a78304b0e15befe57ef68e8a85a00553f5c60e"
   integrity sha1-yaeDBLDhW+/lfvaOioWgBVP1xg4=
 
-sinon@^9.0.2:
+sinon@^9.2.1:
   version "9.2.1"
   resolved "https://registry.npm.taobao.org/sinon/download/sinon-9.2.1.tgz#64cc88beac718557055bd8caa526b34a2231be6d"
   integrity sha1-ZMyIvqxxhVcFW9jKpSazSiIxvm0=

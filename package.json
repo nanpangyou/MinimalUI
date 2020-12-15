@@ -4,13 +4,15 @@
   "description": "一个基于vue的UI轮子",
   "private": true,
   "scripts": {
+    "原始test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "test": "vue-cli-service test:unit",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "watch-test:unit": "vue-cli-service test:unit --watch"
   },
   "repository": {
     "type": "git",
@@ -29,10 +31,15 @@
   },
   "homepage": "https://github.com/nanpangyou/MinimalUI#readme",
   "dependencies": {
-    "vue": "^2.6.11",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/test-utils": "^1.0.3",
+    "chai": "^4.1.2",
     "chai-spies": "^1.0.0",
     "karma": "^5.1.0",
     "karma-chai": "^0.1.0",
@@ -41,17 +48,12 @@
     "karma-mocha": "^2.0.1",
     "karma-sinon-chai": "^2.0.2",
     "mocha": "^8.0.1",
-    "sinon": "^9.0.2",
-    "sinon-chai": "^3.5.0",
-    "vue-server-renderer": "^2.6.11",
-    "vuepress": "^1.6.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-unit-mocha": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "chai": "^4.1.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "sinon": "^9.2.1",
+    "sinon-chai": "^3.5.0",
+    "vue-server-renderer": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.6.0"
   }
 }
