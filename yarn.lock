@@ -2938,7 +2938,7 @@ colorette@^1.2.1:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
   integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
 
-colors@^1.4.0:
+colors@^1.1.2, colors@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/colors/download/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha1-xQSRR51MG9rtLJztMs98fcI2D3g=
@@ -5977,16 +5977,6 @@ just-extend@^4.0.2:
   resolved "https://registry.npm.taobao.org/just-extend/download/just-extend-4.1.1.tgz#158f1fdb01f128c411dc8b286a7b4837b3545282"
   integrity sha1-FY8f2wHxKMQR3IsoantIN7NUUoI=
 
-karma-chai-spies@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npm.taobao.org/karma-chai-spies/download/karma-chai-spies-0.1.4.tgz#da0fbaedd9ac7ebf4e3efd15e58c493203f07d08"
-  integrity sha1-2g+67dmsfr9OPv0V5YxJMgPwfQg=
-
-karma-chai@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npm.taobao.org/karma-chai/download/karma-chai-0.1.0.tgz#bee5ad40400517811ae34bb945f762909108b79a"
-  integrity sha1-vuWtQEAFF4Ea40u5RfdikJEIt5o=
-
 karma-chrome-launcher@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/karma-chrome-launcher/download/karma-chrome-launcher-3.1.0.tgz#805a586799a4d05f4e54f72a204979f3f3066738"
@@ -6001,10 +5991,31 @@ karma-mocha@^2.0.1:
   dependencies:
     minimist "^1.2.3"
 
-karma-sinon-chai@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npm.taobao.org/karma-sinon-chai/download/karma-sinon-chai-2.0.2.tgz#e28c109b989973abafc28a7c9f09ef24a05e07c2"
-  integrity sha1-4owQm5iZc6uvwop8nwnvJKBeB8I=
+karma-sourcemap-loader@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.npm.taobao.org/karma-sourcemap-loader/download/karma-sourcemap-loader-0.3.8.tgz#d4bae72fb7a8397328a62b75013d2df937bdcf9c"
+  integrity sha1-1LrnL7eoOXMopit1AT0t+Te9z5w=
+  dependencies:
+    graceful-fs "^4.1.2"
+
+karma-spec-reporter@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.npm.taobao.org/karma-spec-reporter/download/karma-spec-reporter-0.0.32.tgz#2e9c7207ea726771260259f82becb543209e440a"
+  integrity sha1-LpxyB+pyZ3EmAln4K+y1QyCeRAo=
+  dependencies:
+    colors "^1.1.2"
+
+karma-webpack@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npm.taobao.org/karma-webpack/download/karma-webpack-4.0.2.tgz#23219bd95bdda853e3073d3874d34447c77bced0"
+  integrity sha1-IyGb2VvdqFPjBz04dNNER8d7ztA=
+  dependencies:
+    clone-deep "^4.0.1"
+    loader-utils "^1.1.0"
+    neo-async "^2.6.1"
+    schema-utils "^1.0.0"
+    source-map "^0.7.3"
+    webpack-dev-middleware "^3.7.0"
 
 karma@^5.1.0:
   version "5.2.3"
@@ -10136,6 +10147,17 @@ webpack-chain@^6.0.0, webpack-chain@^6.4.0:
   dependencies:
     deepmerge "^1.5.2"
     javascript-stringify "^2.0.1"
+
+webpack-dev-middleware@^3.7.0:
+  version "3.7.3"
+  resolved "https://registry.npm.taobao.org/webpack-dev-middleware/download/webpack-dev-middleware-3.7.3.tgz?cache=0&sync_timestamp=1608054819010&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwebpack-dev-middleware%2Fdownload%2Fwebpack-dev-middleware-3.7.3.tgz#0639372b143262e2b84ab95d3b91a7597061c2c5"
+  integrity sha1-Bjk3KxQyYuK4SrldO5GnWXBhwsU=
+  dependencies:
+    memory-fs "^0.4.1"
+    mime "^2.4.4"
+    mkdirp "^0.5.1"
+    range-parser "^1.2.1"
+    webpack-log "^2.0.0"
 
 webpack-dev-middleware@^3.7.2:
   version "3.7.2"

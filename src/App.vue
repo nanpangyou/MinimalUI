@@ -34,6 +34,9 @@
     </div>
     <h1>Grid</h1>
     <div class="box" style="border: 1px solid">
+      <m-row :gutter="20">
+        <m-col></m-col>
+      </m-row>
       <m-row>
         <m-col :span="12" :xs="{ span: 24 }">1</m-col>
         <m-col :span="12" :xs="{ span: 24 }">2</m-col>

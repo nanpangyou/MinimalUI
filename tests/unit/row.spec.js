@@ -10,8 +10,9 @@ describe("Row", () => {
         expect(Row).to.be.ok;
     });
     // 暂时没法测试css
-    xit("可以设置gutter.", (done) => {
-        const wrapper = mount(Row, {
+    it("可以设置gutter.", async () => {
+        const wrapper = await mount(Row, {
+            attachTo: document.body,
             slots: {
                 default: [Col],
             },
@@ -19,38 +20,38 @@ describe("Row", () => {
                 gutter: '20'
             }
         })
-        console.log(wrapper.html())
-        const colDom = wrapper.find(".m-col");
-        console.log(colDom.html())
+        const colDom = wrapper.find(".m-col").vm.$el;
         expect(getComputedStyle(colDom).paddingRight).to.eq("10px");
         expect(getComputedStyle(colDom).paddingLeft).to.eq("10px");
     });
     //暂时没法测试css
-    xit("可以设置align1.", () => {
-        const wrapper = mount(Row, {
+    it("可以设置align1.", async () => {
+        const wrapper = await mount(Row, {
+            attachTo: document.body,
             propsData: {
                 align: 'center'
             }
         })
-        const rowDom = wrapper.find(".m-row");
+        const rowDom = wrapper.find(".m-row").vm.$el;
         expect(getComputedStyle(rowDom).justifyContent).to.eq("center");
     });
     // 暂时没法测试css
-    xit("可以设置align2.", () => {
-        const wrapper = mount(Row, {
+    it("可以设置align2.", async () => {
+        const wrapper = await mount(Row, {
+            attachTo: document.body,
             propsData: {
                 align: 'right'
             }
         })
-        const rowDom = wrapper.find(".m-row");
+        const rowDom = wrapper.find(".m-row").vm.$el;
         expect(getComputedStyle(rowDom).justifyContent).to.eq("flex-end");
     });
     //暂时没法测试css
-    xit("可以设置align3.", () => {
-        const wrapper = mount(Row);
-        const rowDom = wrapper.find(".m-row");
+    it("可以设置align3.", async () => {
+        const wrapper = await mount(Row, {
+            attachTo: document.body
+        });
+        const rowDom = wrapper.find(".m-row").vm.$el;
         expect(getComputedStyle(rowDom).justifyContent).to.eq("flex-start");
-        vm.$el.remove();
-        vm.$destroy();
     });
 });

@@ -10,23 +10,24 @@ const validator = (value) => {
     .every((i) => i === true);
 };
 export default {
+  name: "m-col",
   props: {
     span: {
-      type: [Number, String]
+      type: [Number, String],
     },
     offset: {
-      type: [Number, String]
+      type: [Number, String],
     },
     xs: { type: Object, validator },
     sm: { type: Object, validator },
     md: { type: Object, validator },
     lg: { type: Object, validator },
     xl: { type: Object, validator },
-    xxl: { type: Object, validator }
+    xxl: { type: Object, validator },
   },
   data() {
     return {
-      gutter: this.gutter
+      gutter: this.gutter,
     };
   },
   methods: {
@@ -34,10 +35,10 @@ export default {
       return obj
         ? [
             obj.span && `m-${str}-col-${obj.span}`,
-            obj.offset && `m-${str}-col-offset-${obj.offset}`
+            obj.offset && `m-${str}-col-offset-${obj.offset}`,
           ]
         : [];
-    }
+    },
   },
   computed: {
     gutterStyle() {
@@ -54,10 +55,10 @@ export default {
         ...this.getClass(md, "md"),
         ...this.getClass(lg, "lg"),
         ...this.getClass(xl, "xl"),
-        ...this.getClass(xxl, "xxl")
+        ...this.getClass(xxl, "xxl"),
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

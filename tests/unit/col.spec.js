@@ -10,8 +10,9 @@ describe("Col", () => {
     it("存在.", () => {
         expect(Col).to.be.ok;
     });
-    xit("可以设置gutter.", () => {
-        const RowWrapper = mount(Row, {
+    it("可以设置gutter.", async () => {
+        const RowWrapper = await mount(Row, {
+            attachTo: document.body,
             slots: {
                 default: [Col]
             },
@@ -19,8 +20,7 @@ describe("Col", () => {
                 gutter: 20
             }
         })
-        // console.log(RowWrapper.html())
-        console.log(RowWrapper.find('.m-col').html())
+        const colDom = RowWrapper.find('.m-col').vm.$el;
         expect(getComputedStyle(colDom).paddingRight).to.eq("10px");
         expect(getComputedStyle(colDom).paddingLeft).to.eq("10px");
     });

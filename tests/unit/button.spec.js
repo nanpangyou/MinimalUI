@@ -28,27 +28,26 @@ describe('Button.vue', () => {
     const useElement = wrapper.find("use");
     expect(useElement.attributes()['href']).to.equal("#i-loading");
   });
-  xit("icon 默认的 order 是 1", () => {
+  it("icon 默认的 order 是 1", () => {
     const wrapper = mount(Button, {
+      attachTo: document.body,
       propsData: {
         name: "setting"
       }
     })
     const icon = wrapper.find("svg");
-    console.log(icon.html())
-    expect(getComputedStyle(icon).order).to.eq("1");
+    expect(getComputedStyle(icon.vm.$el).order).to.eq("1");
   });
-  xit("设置 iconPosition 可以改变 order", () => {
+  it("设置 iconPosition 可以改变 order", () => {
     const wrapper = mount(Button, {
+      attachTo: document.body,
       propsData: {
         name: "setting",
         iconPosition: "right"
       }
     })
-    const icon = vm.$el.querySelector("svg");
-    expect(getComputedStyle(icon).order).to.eq("2");
-    vm.$el.remove();
-    vm.$destroy();
+    const icon = wrapper.find("svg");
+    expect(getComputedStyle(icon.vm.$el).order).to.eq("2");
   });
   it("点击 button 触发 click 事件", () => {
     const wrapper = mount(Button, {
