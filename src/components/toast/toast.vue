@@ -1,11 +1,53 @@
 <template>
   <div class="toast">
     <slot></slot>
+    <span class="line" v-if="closeButton"></span>
+    <span v-if="closeButton" class="close-btn">
+      <span @click="closeCallback">{{ closeButton.msg }}</span>
+    </span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "MToast",
+  props: {
+    autoDelay: {
+      type: Boolean,
+      default: true,
+    },
+    delayTime: {
+      type: [String, Number],
+      default: 3000,
+    },
+    closeButton: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  mounted() {
+    if (this.autoDelay) {
+      setTimeout(() => {
+        this.close();
+      }, this.delayTime);
+    }
+  },
+  methods: {
+    close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    log() {
+      console.log("log");
+    },
+    closeCallback() {
+      if (this.closeButton && typeof this.closeButton.callback === "function") {
+        this.closeButton.callback(this);
+      }
+      this.close();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -27,5 +69,14 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   border-radius: 6px;
   color: #fff;
   padding: 0 8px;
+  .line {
+    height: 100%;
+    border-left: 1px solid #ccc;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .close-btn {
+    cursor: pointer;
+  }
 }
 </style>

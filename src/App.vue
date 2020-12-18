@@ -1,5 +1,10 @@
 <template>
   <div>
+    <h1>Toast</h1>
+    <div class="box">
+      <m-button @click="showToast">click</m-button>
+      <section>展示toast</section>
+    </div>
     <h1>Button</h1>
     <div class="box">
       <m-button :loading="loading1" @click="loading1 = !loading1">
@@ -99,8 +104,6 @@
         <m-footer style="border: 1px solid">footer</m-footer>
       </m-layout>
     </div>
-    <h1>Toast</h1>
-    <m-button @click="showToast">click</m-button>
   </div>
 </template>
 
@@ -142,11 +145,22 @@ export default {
     };
   },
   mounted() {
-    this.showToast();
+    this.$toast("我是 toast", {
+      autoDelay: false,
+      closeButton: {
+        msg: "朕知道了",
+        callback: (toast) => {
+          console.log("朕知道了");
+          toast.log();
+        },
+      },
+    });
   },
   methods: {
     showToast() {
-      this.$toast("我是 toast");
+      this.$toast("dianjide toast", {
+        delayTime: 8000,
+      });
     },
   },
 };
