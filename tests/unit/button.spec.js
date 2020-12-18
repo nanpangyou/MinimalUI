@@ -5,7 +5,7 @@ import sinonChai from 'sinon-chai'
 import Button from "@/components/button/button";
 chai.use(sinonChai)
 
-describe('Button.vue', () => {
+describe('Button', () => {
   it("存在.", () => {
     expect(Button).to.be.ok;
   });

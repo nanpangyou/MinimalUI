@@ -3,3 +3,7 @@ dist/
 .cache/
 .idea/
 .vscode/
+coverage/
+package.old.json
+package.use.json
+yarn-error.log
