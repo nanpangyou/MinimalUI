@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="toast">
+  <div class="toast" ref="toast" :class="toastClasses">
     <div class="message-part">
       <slot v-if="!enableHTML"></slot>
       <div v-else v-html="$slots.default[0]"></div>
@@ -31,10 +31,27 @@ export default {
       type: Boolean,
       default: false,
     },
+    position: {
+      type: String,
+      default: "top",
+      validator(value) {
+        if (!["top", "bottom", "middle"].includes(value)) {
+          console.error(
+            `MToast组件的position应为top,bottom,middle中的一个，现在为${value}`
+          );
+        }
+        return ["top", "bottom", "middle"].includes(value);
+      },
+    },
   },
   mounted() {
     this.updateStyle();
     this.excuteClose();
+  },
+  computed: {
+    toastClasses() {
+      return [`position-${this.position}`];
+    },
   },
   methods: {
     updateStyle() {
@@ -78,7 +95,6 @@ $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 .toast {
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
   font-size: $font-size;
@@ -91,6 +107,16 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   border-radius: 6px;
   color: #fff;
   padding: 0 8px;
+  &.position-top {
+    top: 0;
+  }
+  &.position-bottom {
+    bottom: 0;
+  }
+  &.position-middle {
+    top: 50%;
+  }
+
   .message-part {
     margin: 8px 0;
   }

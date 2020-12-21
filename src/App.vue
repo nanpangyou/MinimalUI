@@ -145,7 +145,7 @@ export default {
     };
   },
   mounted() {
-    this.$toast("我是 toast");
+    this.$toast("我是 toast", { position: "middle" });
   },
   methods: {
     showToast() {
