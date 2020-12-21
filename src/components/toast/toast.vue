@@ -1,9 +1,12 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-    <span class="line" v-if="closeButton"></span>
-    <span v-if="closeButton" class="close-btn">
-      <span @click="closeCallback">{{ closeButton.msg }}</span>
+  <div class="toast" ref="toast">
+    <div class="message-part">
+      <slot v-if="!enableHTML"></slot>
+      <div v-else v-html="$slots.default[0]"></div>
+    </div>
+    <span class="line" v-if="closeButton" ref="line"></span>
+    <span v-if="closeButton" class="close-btn" @click="closeCallback">
+      {{ closeButton.msg }}
     </span>
   </div>
 </template>
@@ -24,15 +27,34 @@ export default {
       type: Object,
       default: () => {},
     },
+    enableHTML: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
-    if (this.autoDelay) {
-      setTimeout(() => {
-        this.close();
-      }, this.delayTime);
-    }
+    this.updateStyle();
+    this.excuteClose();
   },
   methods: {
+    updateStyle() {
+      //设置分割线高度
+      if (this.closeButton && this.closeButton.msg) {
+        this.$nextTick(() => {
+          //  设置分割线的高度
+          this.$refs.line.style.height = getComputedStyle(
+            this.$refs.toast
+          ).height;
+        });
+      }
+    },
+    excuteClose() {
+      if (this.autoDelay) {
+        setTimeout(() => {
+          this.close();
+        }, this.delayTime);
+      }
+    },
     close() {
       this.$el.remove();
       this.$destroy();
@@ -61,7 +83,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   transform: translateX(-50%);
   font-size: $font-size;
   line-height: 1.8;
-  height: $toast-height;
+  min-height: $toast-height;
   display: flex;
   align-items: center;
   background: $toast-bg;
@@ -69,6 +91,9 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   border-radius: 6px;
   color: #fff;
   padding: 0 8px;
+  .message-part {
+    margin: 8px 0;
+  }
   .line {
     height: 100%;
     border-left: 1px solid #ccc;
@@ -76,6 +101,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     margin-right: 8px;
   }
   .close-btn {
+    flex-shrink: 0;
     cursor: pointer;
   }
 }

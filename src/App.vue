@@ -145,22 +145,22 @@ export default {
     };
   },
   mounted() {
-    this.$toast("我是 toast", {
-      autoDelay: false,
-      closeButton: {
-        msg: "朕知道了",
-        callback: (toast) => {
-          console.log("朕知道了");
-          toast.log();
-        },
-      },
-    });
+    this.$toast("我是 toast");
   },
   methods: {
     showToast() {
-      this.$toast("dianjide toast", {
-        delayTime: 8000,
-      });
+      this.$toast(
+        "<span style='color: yellow'>晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了</span>",
+        {
+          enableHTML: true,
+          delayTime: 8000,
+          autoDelay: false,
+          closeButton: {
+            msg: "明白",
+            // callback: () => {},
+          },
+        }
+      );
     },
   },
 };

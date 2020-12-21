@@ -1,6 +1,6 @@
 import Toast from "./toast";
 export default {
-  install(Vue, options) {
+  install(Vue) {
     Vue.prototype.$toast = function (message, options = {}) {
       // 动态创建vue实例 类似测试代码
       // 1. 引入`toast.vue`文件
