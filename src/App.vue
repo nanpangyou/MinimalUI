@@ -2,7 +2,9 @@
   <div>
     <h1>Toast</h1>
     <div class="box">
-      <m-button @click="showToast">click</m-button>
+      <m-button @click="showToast1">click</m-button>
+      <m-button @click="showToast2">click</m-button>
+      <m-button @click="showToast3">click</m-button>
       <section>展示toast</section>
     </div>
     <h1>Button</h1>
@@ -148,8 +150,18 @@ export default {
     this.$toast("我是 toast", { position: "middle" });
   },
   methods: {
-    showToast() {
+    showToast1() {
+      this.showToast("top");
+    },
+    showToast2() {
+      this.showToast("bottom");
+    },
+    showToast3() {
+      this.showToast("middle");
+    },
+    showToast(position) {
       this.$toast(`${Math.random()}xxx`, {
+        position,
         enableHTML: true,
         delayTime: 8000,
         autoDelay: false,

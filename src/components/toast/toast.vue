@@ -1,13 +1,15 @@
 <template>
-  <div class="toast" ref="toast" :class="toastClasses">
-    <div class="message-part">
-      <slot v-if="!enableHTML"></slot>
-      <div v-else v-html="$slots.default[0]"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="message-part">
+        <slot v-if="!enableHTML"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
+      <span class="line" v-if="closeButton" ref="line"></span>
+      <span v-if="closeButton" class="close-btn" @click="closeCallback">
+        {{ closeButton.msg }}
+      </span>
     </div>
-    <span class="line" v-if="closeButton" ref="line"></span>
-    <span v-if="closeButton" class="close-btn" @click="closeCallback">
-      {{ closeButton.msg }}
-    </span>
   </div>
 </template>
 
@@ -94,42 +96,62 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-.toast {
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.wrapper {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  font-size: $font-size;
-  line-height: 1.8;
-  min-height: $toast-height;
-  display: flex;
-  align-items: center;
-  background: $toast-bg;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
   border-radius: 6px;
-  color: #fff;
-  padding: 0 8px;
   &.position-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     top: 0;
   }
   &.position-bottom {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     bottom: 0;
   }
   &.position-middle {
     top: 50%;
+    transform: translateY(-50%) translateX(-50%);
   }
 
-  .message-part {
-    margin: 8px 0;
-  }
-  .line {
-    height: 100%;
-    border-left: 1px solid #ccc;
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-  .close-btn {
-    flex-shrink: 0;
-    cursor: pointer;
+  .toast {
+    animation: fade-in 1s;
+    font-size: $font-size;
+    line-height: 1.8;
+    min-height: $toast-height;
+    display: flex;
+    align-items: center;
+    background: $toast-bg;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    border-radius: inherit;
+    color: #fff;
+    padding: 0 8px;
+
+    .message-part {
+      margin: 8px 0;
+    }
+    .line {
+      height: 100%;
+      border-left: 1px solid #ccc;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+    .close-btn {
+      flex-shrink: 0;
+      cursor: pointer;
+    }
   }
 }
 </style>
