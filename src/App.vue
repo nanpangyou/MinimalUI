@@ -149,18 +149,15 @@ export default {
   },
   methods: {
     showToast() {
-      this.$toast(
-        "<span style='color: yellow'>晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了晓得了</span>",
-        {
-          enableHTML: true,
-          delayTime: 8000,
-          autoDelay: false,
-          closeButton: {
-            msg: "明白",
-            // callback: () => {},
-          },
-        }
-      );
+      this.$toast(`${Math.random()}xxx`, {
+        enableHTML: true,
+        delayTime: 8000,
+        autoDelay: false,
+        closeButton: {
+          msg: "明白",
+          // callback: () => {},
+        },
+      });
     },
   },
 };

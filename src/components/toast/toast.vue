@@ -74,6 +74,7 @@ export default {
     },
     close() {
       this.$el.remove();
+      this.$emit("closeToast");
       this.$destroy();
     },
     log() {
