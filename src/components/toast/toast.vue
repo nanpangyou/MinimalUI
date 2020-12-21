@@ -134,7 +134,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     border-top-right-radius: 0;
     top: 0;
     .toast {
-      animation: slide-down 1s;
+      animation: slide-down 300ms;
     }
   }
   &.position-bottom {
@@ -142,14 +142,14 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     border-bottom-right-radius: 0;
     bottom: 0;
     .toast {
-      animation: slide-up 1s;
+      animation: slide-up 300ms;
     }
   }
   &.position-middle {
     top: 50%;
     transform: translateY(-50%) translateX(-50%);
     .toast {
-      animation: fade-in 1s;
+      animation: fade-in 300ms;
     }
   }
 
