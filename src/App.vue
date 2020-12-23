@@ -1,5 +1,25 @@
 <template>
   <div>
+    <h1>Tabs</h1>
+    <div class="box">
+      <!-- <m-tabs :selected="selectedTab" @update:selected="selectedTab = $event"> -->
+      <!-- 上下的写法等价 -->
+      <m-tabs :selected.sync="selectedTab" direction="horizontal">
+        <m-tabs-head>
+          <template slot="actions">
+            <button>action</button>
+          </template>
+          <m-tabs-item name="1"> <m-icon name="setting"></m-icon>1</m-tabs-item>
+          <m-tabs-item name="2" disabled>2</m-tabs-item>
+          <m-tabs-item name="3">3</m-tabs-item>
+        </m-tabs-head>
+        <m-tabs-body>
+          <m-tabs-pane name="1">pane1</m-tabs-pane>
+          <m-tabs-pane name="2">pane2</m-tabs-pane>
+          <m-tabs-pane name="3">pane3</m-tabs-pane>
+        </m-tabs-body>
+      </m-tabs>
+    </div>
     <h1>Toast</h1>
     <div class="box">
       <m-button @click="showToast1">click</m-button>
@@ -122,6 +142,11 @@ import MContent from "../src/components/layout/content";
 import MSider from "../src/components/layout/sider";
 import MFooter from "../src/components/layout/footer";
 import MToast from "../src/components/toast/toast";
+import MTabs from "../src/components/tabs/tabs";
+import MTabsHead from "../src/components/tabs/tabs-head";
+import MTabsBody from "../src/components/tabs/tabs-body";
+import MTabsItem from "../src/components/tabs/tabs-item";
+import MTabsPane from "../src/components/tabs/tabs-pane";
 
 export default {
   name: "App",
@@ -137,6 +162,11 @@ export default {
     "m-content": MContent,
     "m-sider": MSider,
     "m-footer": MFooter,
+    "m-tabs": MTabs,
+    "m-tabs-head": MTabsHead,
+    "m-tabs-item": MTabsItem,
+    "m-tabs-body": MTabsBody,
+    "m-tabs-pane": MTabsPane,
   },
   data() {
     return {
@@ -144,6 +174,7 @@ export default {
       loading2: false,
       loading3: false,
       message: "value2",
+      selectedTab: "3",
     };
   },
   mounted() {
