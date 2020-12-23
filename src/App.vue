@@ -160,15 +160,9 @@ export default {
       this.showToast("middle");
     },
     showToast(position) {
-      this.$toast(`${Math.random()}xxx`, {
+      this.$toast(`<span style='color:yellow'>${Math.random()}xxx</span>`, {
         position,
-        enableHTML: true,
-        delayTime: 8000,
-        autoDelay: false,
-        closeButton: {
-          msg: "明白",
-          // callback: () => {},
-        },
+        // enableHTML: true,
       });
     },
   },

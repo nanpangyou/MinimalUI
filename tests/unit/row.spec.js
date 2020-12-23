@@ -9,7 +9,7 @@ describe("Row", () => {
     it("存在.", () => {
         expect(Row).to.be.ok;
     });
-    // 暂时没法测试css
+
     it("可以设置gutter.", async () => {
         const wrapper = await mount(Row, {
             attachTo: document.body,
@@ -24,7 +24,7 @@ describe("Row", () => {
         expect(getComputedStyle(colDom).paddingRight).to.eq("10px");
         expect(getComputedStyle(colDom).paddingLeft).to.eq("10px");
     });
-    //暂时没法测试css
+
     it("可以设置align1.", async () => {
         const wrapper = await mount(Row, {
             attachTo: document.body,
@@ -35,7 +35,7 @@ describe("Row", () => {
         const rowDom = wrapper.find(".m-row").vm.$el;
         expect(getComputedStyle(rowDom).justifyContent).to.eq("center");
     });
-    // 暂时没法测试css
+
     it("可以设置align2.", async () => {
         const wrapper = await mount(Row, {
             attachTo: document.body,
@@ -46,7 +46,7 @@ describe("Row", () => {
         const rowDom = wrapper.find(".m-row").vm.$el;
         expect(getComputedStyle(rowDom).justifyContent).to.eq("flex-end");
     });
-    //暂时没法测试css
+
     it("可以设置align3.", async () => {
         const wrapper = await mount(Row, {
             attachTo: document.body
