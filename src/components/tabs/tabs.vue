@@ -4,8 +4,14 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
 export default {
   name: "MTabs",
+  data() {
+    return {
+      eventHub: new Vue(),
+    };
+  },
   props: {
     selected: {
       type: String,
@@ -19,10 +25,18 @@ export default {
       },
     },
   },
-  created() {
-    this.$emit("update:selected", "3");
+  provide() {
+    return {
+      eventHub: this.eventHub,
+    };
+  },
+  mounted() {
+    this.eventHub.$emit("update:selected", this.selected);
   },
 };
 </script>
 <style lang="scss" scoped>
+.tabs {
+  min-width: 600px;
+}
 </style>

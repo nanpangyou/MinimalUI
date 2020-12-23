@@ -6,6 +6,7 @@
 <script>
 export default {
   name: "MTabsBody",
+  inject: ["eventHub"],
 };
 </script>
 <style lang="scss" scoped>

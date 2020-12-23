@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>Tabs</h1>
-    <div class="box">
+    <div class="box" style="padding: 3em; width: 800px">
       <!-- <m-tabs :selected="selectedTab" @update:selected="selectedTab = $event"> -->
       <!-- 上下的写法等价 -->
       <m-tabs :selected.sync="selectedTab" direction="horizontal">
         <m-tabs-head>
           <template slot="actions">
-            <button>action</button>
+            <m-button>action</m-button>
           </template>
           <m-tabs-item name="1"> <m-icon name="setting"></m-icon>1</m-tabs-item>
           <m-tabs-item name="2" disabled>2</m-tabs-item>
