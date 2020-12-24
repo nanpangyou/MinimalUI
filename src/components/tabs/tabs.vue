@@ -17,13 +17,13 @@ export default {
       type: String,
       required: true,
     },
-    direction: {
-      type: String,
-      default: "horizontal",
-      validator: (value) => {
-        return ["horizontal", "vertical"].includes(value);
-      },
-    },
+    // direction: {
+    //   type: String,
+    //   default: "horizontal",
+    //   validator: (value) => {
+    //     return ["horizontal", "vertical"].includes(value);
+    //   },
+    // },
   },
   provide() {
     return {
@@ -31,12 +31,26 @@ export default {
     };
   },
   mounted() {
-    this.eventHub.$emit("update:selected", this.selected);
+    this.initStyle();
+  },
+  methods: {
+    initStyle() {
+      //emit初始化选中的item信息
+      this.$children.forEach((i) => {
+        if (i.$options.name === "MTabsHead") {
+          i.$children.forEach((j) => {
+            if (j.$options.name === "MTabsItem" && j.name === this.selected) {
+              this.eventHub.$emit("update:selected", this.selected, j.$el);
+            }
+          });
+        }
+      });
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
-.tabs {
+.m-tabs {
   min-width: 600px;
 }
 </style>

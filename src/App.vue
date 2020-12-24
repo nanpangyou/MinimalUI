@@ -4,7 +4,8 @@
     <div class="box" style="padding: 3em; width: 800px">
       <!-- <m-tabs :selected="selectedTab" @update:selected="selectedTab = $event"> -->
       <!-- 上下的写法等价 -->
-      <m-tabs :selected.sync="selectedTab" direction="horizontal">
+      <!-- <m-tabs :selected.sync="selectedTab" direction="horizontal"> -->
+      <m-tabs :selected="selectedTab">
         <m-tabs-head>
           <template slot="actions">
             <m-button>action</m-button>
@@ -174,7 +175,7 @@ export default {
       loading2: false,
       loading3: false,
       message: "value2",
-      selectedTab: "3",
+      selectedTab: "2",
     };
   },
   mounted() {

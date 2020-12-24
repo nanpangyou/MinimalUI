@@ -2,7 +2,7 @@
   <div
     class="m-tabs-item"
     :disabled="disabled"
-    :class="isSelected"
+    :class="classes"
     @click="change"
   >
     <slot></slot>
@@ -28,15 +28,17 @@ export default {
   },
   inject: ["eventHub"],
   computed: {
-    isSelected() {
+    classes() {
       return {
         "is-selected": this.selected,
+        disabled: this.disabled,
       };
     },
   },
   methods: {
     change() {
-      this.eventHub.$emit("update:selected", this.name);
+      if (this.disabled) return;
+      this.eventHub.$emit("update:selected", this.name, this.$el);
     },
   },
   mounted() {
@@ -47,17 +49,26 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$color: #1890ff;
+$disabled-color: #bbb;
 .m-tabs-item {
   flex-shrink: 0;
-  padding: 0 0.2em;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  min-width: 60px;
+  padding: 0 2em;
+  height: 100%;
   margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  &:hover {
+    color: $color;
+  }
   &.is-selected {
-    border-bottom: 3px solid #1890ff;
+    color: $color;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    color: $disabled-color;
   }
 }
 </style>
