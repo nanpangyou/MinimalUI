@@ -1,5 +1,18 @@
 <template>
   <div>
+    <h1>Popover</h1>
+    <div class="box" style="padding: 3em; width: 800px">
+      <m-popover>
+        <m-button slot="reference">点击</m-button>
+        <div>this is popover</div>
+        <div>this is popover</div>
+        <div>this is popover</div>
+      </m-popover>
+      <m-popover>
+        <m-button slot="reference">点击</m-button>
+        <div>this is popover</div>
+      </m-popover>
+    </div>
     <h1>Tabs</h1>
     <div class="box" style="padding: 3em; width: 800px">
       <!-- <m-tabs :selected="selectedTab" @update:selected="selectedTab = $event"> -->
@@ -148,6 +161,7 @@ import MTabsHead from "../src/components/tabs/tabs-head";
 import MTabsBody from "../src/components/tabs/tabs-body";
 import MTabsItem from "../src/components/tabs/tabs-item";
 import MTabsPane from "../src/components/tabs/tabs-pane";
+import MPopover from "../src/components/popover/popover";
 
 export default {
   name: "App",
@@ -168,6 +182,7 @@ export default {
     "m-tabs-item": MTabsItem,
     "m-tabs-body": MTabsBody,
     "m-tabs-pane": MTabsPane,
+    "m-popover": MPopover,
   },
   data() {
     return {
