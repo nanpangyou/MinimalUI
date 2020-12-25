@@ -17,17 +17,18 @@ export default {
   methods: {
     updateLineStyle() {
       //初始化item下的选择线位置
-      this.eventHub.$on("update:selected", (selectedName, selectedDom) => {
-        const {
-          width,
-          height,
-          top,
-          left,
-        } = selectedDom.getBoundingClientRect();
-        this.$refs.line.style.width = width + "px";
-        this.$refs.line.style.left =
-          left - this.$refs.mTabsHead.getBoundingClientRect().left + "px";
-      });
+      this.eventHub &&
+        this.eventHub.$on("update:selected", (selectedName, selectedDom) => {
+          const {
+            width,
+            height,
+            top,
+            left,
+          } = selectedDom.getBoundingClientRect();
+          this.$refs.line.style.width = width + "px";
+          this.$refs.line.style.left =
+            left - this.$refs.mTabsHead.getBoundingClientRect().left + "px";
+        });
     },
   },
 };

@@ -175,7 +175,7 @@ export default {
       loading2: false,
       loading3: false,
       message: "value2",
-      selectedTab: "2",
+      selectedTab: "3",
     };
   },
   mounted() {

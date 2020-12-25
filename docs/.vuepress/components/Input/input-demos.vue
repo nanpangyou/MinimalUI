@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import MInput from "../../../../src/component/input/input";
+import MInput from "../../../../src/components/input/input";
 export default {
   data() {
     return {

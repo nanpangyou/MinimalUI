@@ -10,8 +10,8 @@
   </div>
 </template>
 <script>
-import MButton from "../../../../src/component/button/button";
-import MButtonGroup from "../../../../src/component/button-group/button-group";
+import MButton from "../../../../src/components/button/button";
+import MButtonGroup from "../../../../src/components/button-group/button-group";
 export default {
   components: {
     "m-button": MButton,

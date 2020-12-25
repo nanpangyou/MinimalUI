@@ -30,11 +30,11 @@
   </div>
 </template>
 <script>
-import MLayout from "../../../../src/component/layout/layout";
-import MHeader from "../../../../src/component/layout/header";
-import MContent from "../../../../src/component/layout/content";
-import MSider from "../../../../src/component/layout/sider";
-import MFooter from "../../../../src/component/layout/footer";
+import MLayout from "../../../../src/components/layout/layout";
+import MHeader from "../../../../src/components/layout/header";
+import MContent from "../../../../src/components/layout/content";
+import MSider from "../../../../src/components/layout/sider";
+import MFooter from "../../../../src/components/layout/footer";
 export default {
   components: {
     "m-layout": MLayout,

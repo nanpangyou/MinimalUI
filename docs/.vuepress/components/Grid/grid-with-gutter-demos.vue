@@ -22,8 +22,8 @@
   </div>
 </template>
 <script>
-import MRow from "../../../../src/component/grid/row";
-import MCol from "../../../../src/component/grid/col";
+import MRow from "../../../../src/components/grid/row";
+import MCol from "../../../../src/components/grid/col";
 export default {
   components: {
     "m-row": MRow,

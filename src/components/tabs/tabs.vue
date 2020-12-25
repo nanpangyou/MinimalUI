@@ -31,9 +31,19 @@ export default {
     };
   },
   mounted() {
+    this.checkChildren();
     this.initStyle();
   },
   methods: {
+    checkChildren() {
+      if (this.$children.length === 0) {
+        console &&
+          console.warn &&
+          console.warn(
+            "tabs的子组件必须为tabs-head和tabs-body，但是目前没有子组件"
+          );
+      }
+    },
     initStyle() {
       //emit初始化选中的item信息
       this.$children.forEach((i) => {

@@ -26,7 +26,6 @@ export default {
     Vue.prototype.$toast = function (message, options = {}) {
       if (currentToast) {
         currentToast.close()
-        console.log(currentToast)
       }
       currentToast = createToast({
         Vue,

@@ -4,6 +4,7 @@
     :disabled="disabled"
     :class="classes"
     @click="change"
+    :data-name="name"
   >
     <slot></slot>
   </div>
@@ -42,9 +43,10 @@ export default {
     },
   },
   mounted() {
-    this.eventHub.$on("update:selected", (selectedItem) => {
-      this.selected = selectedItem === this.name;
-    });
+    this.eventHub &&
+      this.eventHub.$on("update:selected", (selectedItem) => {
+        this.selected = selectedItem === this.name;
+      });
   },
 };
 </script>

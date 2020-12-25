@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import MButton from "../../../../src/component/button/button";
+import MButton from "../../../../src/components/button/button";
 export default {
   data() {
     return {
