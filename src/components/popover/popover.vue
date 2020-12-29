@@ -1,6 +1,11 @@
 <template>
   <div class="popover-wrapper">
-    <div class="content-wrapper" ref="contentWrapper" v-if="visiable">
+    <div
+      class="content-wrapper"
+      ref="contentWrapper"
+      :class="`position-${position}`"
+      v-if="visiable"
+    >
       <slot></slot>
     </div>
 
@@ -17,6 +22,15 @@ export default {
       visiable: false,
     };
   },
+  props: {
+    position: {
+      type: String,
+      default: "top",
+      validator(value) {
+        return ["top", "left", "right", "bottom"].includes(value);
+      },
+    },
+  },
   mounted() {},
   methods: {
     doubleRaf(callback) {
@@ -30,13 +44,41 @@ export default {
       //在点击的元素上方显示popover
       document.body.appendChild(this.$refs.contentWrapper);
       const {
-        width,
-        height,
-        top,
-        left,
+        width: triggerWidth,
+        height: triggerHeight,
+        top: triggerTop,
+        left: triggerLeft,
       } = this.$refs.triggerWrapper.getBoundingClientRect();
-      this.$refs.contentWrapper.style.left = window.scrollX + left + "px";
-      this.$refs.contentWrapper.style.top = window.scrollY + top + "px";
+      const {
+        width: contentWidth,
+        height: contentHeight,
+        top: contentTop,
+        left: contentLeft,
+      } = this.$refs.contentWrapper.getBoundingClientRect();
+      let contentWrapperStyle = this.$refs.contentWrapper.style;
+      if (this.position === "top") {
+        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
+        contentWrapperStyle.top = window.scrollY + triggerTop + "px";
+      } else if (this.position === "bottom") {
+        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
+        contentWrapperStyle.top =
+          window.scrollY + triggerTop + contentHeight + triggerHeight + "px";
+      } else if (this.position === "left") {
+        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
+        contentWrapperStyle.top =
+          window.scrollY +
+          triggerTop -
+          (contentHeight - triggerHeight) / 2 +
+          "px";
+      } else if (this.position === "right") {
+        contentWrapperStyle.left =
+          window.scrollX + triggerLeft + triggerWidth + "px";
+        contentWrapperStyle.top =
+          window.scrollY +
+          triggerTop -
+          (contentHeight - triggerHeight) / 2 +
+          "px";
+      }
     },
     documentListener(e) {
       //添加到document的监听函数，在点击popover范围以外时关闭popover
@@ -81,15 +123,13 @@ export default {
   display: inline-block;
   border: 1px solid #333;
   position: absolute;
-  transform: translateY(-100%);
   background: #fff;
   z-index: 9999;
   padding: 0.5em 1em;
   border-radius: 6px;
-  margin-top: -10px;
   max-width: 20em;
   word-break: break-all;
-  filter: drop-shadow(0px 1.5px 1.3px #222);
+  filter: drop-shadow(0px 0px 1.3px #222);
   &:before,
   &:after {
     content: "";
@@ -97,17 +137,76 @@ export default {
     height: 0;
     display: block;
     border: 10px solid;
-    border-bottom: none;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: #333;
     position: absolute;
-    top: 100%;
-    left: 10px;
   }
-  &:after {
-    border-top-color: #fff;
-    top: calc(100% - 1px);
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &:before,
+    &:after {
+      border-bottom: none;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-top-color: #333;
+      top: 100%;
+      left: 10px;
+    }
+    &:after {
+      border-top-color: #fff;
+      top: calc(100% - 1px);
+    }
+  }
+  &.position-bottom {
+    margin-top: 10px;
+    transform: translateY(-100%);
+    &:before,
+    &:after {
+      border-top: none;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: #333;
+      bottom: 100%;
+      left: 10px;
+    }
+    &:after {
+      border-bottom-color: #fff;
+      bottom: calc(100% - 1px);
+    }
+  }
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &:before,
+    &:after {
+      border-right: none;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: #333;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:after {
+      border-left-color: #fff;
+      left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &:before,
+    &:after {
+      border-left: none;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      border-right-color: #333;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:after {
+      border-right-color: #fff;
+      right: calc(100% - 1px);
+    }
   }
 }
 </style>

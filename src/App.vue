@@ -12,18 +12,37 @@
       "
       @click="yyy"
     >
-      <m-popover>
+      <m-popover position="top">
         <m-button slot="reference">点击</m-button>
-        fasdl;kfjajdf;ajds;fa;dkfjaksdjf;akdfadfasdfasdfa;dgkjd;gkja;jg;askdjg;skajg;ksajdg;jsd;kfj
+        xxxxxxl Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum,
+        dolorum, accusamus laboriosam et, facilis deleniti voluptatibus nam
+        quibusdam voluptates sunt similique sequi rerum debitis! Corporis
+        repudiandae ex quas aliquam natus!
       </m-popover>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque
-      eligendi dicta? Earum labore veritatis officia quisquam voluptate quidem.
-      Est corrupti incidunt quaerat nisi reiciendis rem obcaecati voluptatibus
-      nostrum soluta.
       <div style="width: 50px; display: inline-block"></div>
-      <m-popover>
+      <m-popover position="left">
         <m-button slot="reference">点击</m-button>
         <div>this is popover</div>
+        popoverthverthis is popover Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Debitis quasi eveniet expedita repellendus a,
+        voluptatem assumenda qui officiis, tempore sint, blanditiis vitae amet
+        eius. Sunt, doloremque reprehenderit? Suscipit, perferendis quod!
+      </m-popover>
+      <div style="width: 50px; display: inline-block"></div>
+      <m-popover position="right">
+        <m-button slot="reference">点击</m-button>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum odit
+        laborum tempora libero deleniti eaque eius dolore beatae labore quia cum
+        molestiae minus soluta odio, quibusdam architecto aperiam magnam. Vel?
+      </m-popover>
+      <div style="width: 50px; display: inline-block"></div>
+      <m-popover position="bottom">
+        <m-button slot="reference">点击</m-button>
+        <div>this is popover</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi iste,
+        mollitia cumque ut nobis, quisquam maxime tempora fugiat laboriosam eum
+        nostrum accusamus iure, reprehenderit labore quae aliquid similique nemo
+        temporibus.
       </m-popover>
     </div>
     <h1>Tabs</h1>
