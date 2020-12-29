@@ -6,10 +6,10 @@
       :class="`position-${position}`"
       v-if="visiable"
     >
-      <slot></slot>
+      <slot :close="onHide"></slot>
     </div>
 
-    <span class="trigger-wrapper" ref="triggerWrapper" @click="onClick">
+    <span class="trigger-wrapper" ref="triggerWrapper">
       <slot name="reference"></slot>
     </span>
   </div>
@@ -30,8 +30,31 @@ export default {
         return ["top", "left", "right", "bottom"].includes(value);
       },
     },
+    trigger: {
+      type: String,
+      default: "click",
+      validator(value) {
+        return ["click", "hover"].includes(value);
+      },
+    },
   },
-  mounted() {},
+  computed: {},
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.triggerWrapper.addEventListener("click", this.onClick);
+    } else if (this.trigger === "hover") {
+      this.$refs.triggerWrapper.addEventListener("mouseenter", this.onShow);
+      this.$refs.triggerWrapper.addEventListener("mouseleave", this.onHide);
+    }
+  },
+  destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.triggerWrapper.removeListener("click", this.onClick);
+    } else if (this.trigger === "hover") {
+      this.$refs.triggerWrapper.removeListener("mouseenter", this.onShow);
+      this.$refs.triggerWrapper.removeListener("mouseleave", this.onHide);
+    }
+  },
   methods: {
     doubleRaf(callback) {
       //解决异步渲染的bug。this.$nextTick()不生效，setTimeout(()=>{},0)也不够好
