@@ -56,29 +56,28 @@ export default {
         left: contentLeft,
       } = this.$refs.contentWrapper.getBoundingClientRect();
       let contentWrapperStyle = this.$refs.contentWrapper.style;
-      if (this.position === "top") {
-        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
-        contentWrapperStyle.top = window.scrollY + triggerTop + "px";
-      } else if (this.position === "bottom") {
-        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
-        contentWrapperStyle.top =
-          window.scrollY + triggerTop + contentHeight + triggerHeight + "px";
-      } else if (this.position === "left") {
-        contentWrapperStyle.left = window.scrollX + triggerLeft + "px";
-        contentWrapperStyle.top =
-          window.scrollY +
-          triggerTop -
-          (contentHeight - triggerHeight) / 2 +
-          "px";
-      } else if (this.position === "right") {
-        contentWrapperStyle.left =
-          window.scrollX + triggerLeft + triggerWidth + "px";
-        contentWrapperStyle.top =
-          window.scrollY +
-          triggerTop -
-          (contentHeight - triggerHeight) / 2 +
-          "px";
-      }
+      const positions = {
+        top: {
+          top: window.scrollY + triggerTop,
+          left: window.scrollX + triggerLeft,
+        },
+        bottom: {
+          top: window.scrollY + triggerTop + contentHeight + triggerHeight,
+          left: window.scrollX + triggerLeft,
+        },
+        left: {
+          top:
+            window.scrollY + triggerTop - (contentHeight - triggerHeight) / 2,
+          left: window.scrollX + triggerLeft,
+        },
+        right: {
+          top:
+            window.scrollY + triggerTop - (contentHeight - triggerHeight) / 2,
+          left: window.scrollX + triggerLeft + triggerWidth,
+        },
+      };
+      contentWrapperStyle.top = positions[this.position].top + "px";
+      contentWrapperStyle.left = positions[this.position].left + "px";
     },
     documentListener(e) {
       //添加到document的监听函数，在点击popover范围以外时关闭popover
