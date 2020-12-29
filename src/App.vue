@@ -1,13 +1,26 @@
 <template>
   <div>
     <h1>Popover</h1>
-    <div class="box" style="padding: 3em; width: 800px">
+    <div
+      class="box"
+      style="
+        padding: 3em;
+        width: 800px;
+        border: 1px solid red;
+        overflow: hidden;
+        border-radius: 3px;
+      "
+      @click="yyy"
+    >
       <m-popover>
         <m-button slot="reference">点击</m-button>
-        <div>this is popover</div>
-        <div>this is popover</div>
-        <div>this is popover</div>
+        fasdl;kfjajdf;ajds;fa;dkfjaksdjf;akdfadfasdfasdfa;dgkjd;gkja;jg;askdjg;skajg;ksajdg;jsd;kfj
       </m-popover>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque
+      eligendi dicta? Earum labore veritatis officia quisquam voluptate quidem.
+      Est corrupti incidunt quaerat nisi reiciendis rem obcaecati voluptatibus
+      nostrum soluta.
+      <div style="width: 50px; display: inline-block"></div>
       <m-popover>
         <m-button slot="reference">点击</m-button>
         <div>this is popover</div>
@@ -18,6 +31,7 @@
       <!-- <m-tabs :selected="selectedTab" @update:selected="selectedTab = $event"> -->
       <!-- 上下的写法等价 -->
       <!-- <m-tabs :selected.sync="selectedTab" direction="horizontal"> -->
+
       <m-tabs :selected="selectedTab">
         <m-tabs-head>
           <template slot="actions">
@@ -211,6 +225,9 @@ export default {
         position,
         // enableHTML: true,
       });
+    },
+    yyy() {
+      console.log("yyy");
     },
   },
 };
