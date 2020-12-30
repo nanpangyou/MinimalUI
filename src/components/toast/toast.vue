@@ -129,6 +129,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   left: 50%;
   transform: translateX(-50%);
   border-radius: 6px;
+  z-index: 11111;
   &.position-top {
     border-top-left-radius: 0;
     border-top-right-radius: 0;

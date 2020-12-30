@@ -237,8 +237,8 @@ import MTabsBody from "../src/components/tabs/tabs-body";
 import MTabsItem from "../src/components/tabs/tabs-item";
 import MTabsPane from "../src/components/tabs/tabs-pane";
 import MPopover from "../src/components/popover/popover";
-import Collapse from "../src/components/collapse/collapse";
-import CollapseItem from "../src/components/collapse/collapse-item";
+import MCollapse from "../src/components/collapse/collapse";
+import MCollapseItem from "../src/components/collapse/collapse-item";
 
 export default {
   name: "App",
@@ -260,8 +260,8 @@ export default {
     "m-tabs-body": MTabsBody,
     "m-tabs-pane": MTabsPane,
     "m-popover": MPopover,
-    "m-collapse": Collapse,
-    "m-collapse-item": CollapseItem,
+    "m-collapse": MCollapse,
+    "m-collapse-item": MCollapseItem,
   },
   data() {
     return {
