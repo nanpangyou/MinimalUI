@@ -1,5 +1,5 @@
 <template>
-  <div class="popover-wrapper">
+  <div class="m-popover-wrapper">
     <div
       class="content-wrapper"
       ref="contentWrapper"
@@ -135,7 +135,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.popover-wrapper {
+.m-popover-wrapper {
   display: inline-block;
   .trigger-wrapper {
     display: inline-block;

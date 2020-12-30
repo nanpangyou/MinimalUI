@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="toastClasses">
+  <div class="m-toast" :class="toastClasses">
     <div class="toast" ref="toast">
       <div class="message-part">
         <slot v-if="!enableHTML"></slot>
@@ -124,7 +124,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     opacity: 1;
   }
 }
-.wrapper {
+.m-toast {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);

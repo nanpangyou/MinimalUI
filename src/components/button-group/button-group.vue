@@ -1,5 +1,5 @@
 <template>
-  <div class="button-group">
+  <div class="m-button-group">
     <slot></slot>
   </div>
 </template>
@@ -17,7 +17,7 @@ $button-radius: 4px;
 $button-border: 1px solid #888;
 $button-hover-border: 1px solid #222;
 $button-active-bg: #eee;
-.button-group {
+.m-button-group {
   display: inline-flex;
   vertical-align: middle;
   > button {

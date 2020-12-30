@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="m-input">
     <input
       type="text"
       :value="value"
@@ -24,23 +24,23 @@ export default {
   name: "m-input",
   props: {
     value: {
-      type: String
+      type: String,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     error: {
-      type: String
-    }
+      type: String,
+    },
   },
   components: {
-    MIcon: Icon
-  }
+    MIcon: Icon,
+  },
 };
 </script>
 
@@ -49,7 +49,7 @@ $height: 28px;
 $font-color: #333;
 $border-color: #999;
 $font-size: 14px;
-.wrapper {
+.m-input {
   font-size: $font-size;
   display: inline-flex;
   vertical-align: middle;

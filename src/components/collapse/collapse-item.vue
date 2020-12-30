@@ -1,7 +1,7 @@
 <template>
-  <div class="collapse-item">
-    <div class="collapse-item-title" @click="toggle">{{ title }}</div>
-    <div v-if="isOpen" class="collapse-item-content">
+  <div class="m-collapse-item">
+    <div class="m-collapse-item-title" @click="toggle">{{ title }}</div>
+    <div v-if="isOpen" class="m-collapse-item-content">
       <slot></slot>
     </div>
   </div>
@@ -45,7 +45,7 @@ export default {
 $gray: #333;
 $border-radius: 6px;
 $collapse-item-title-height: 36px;
-.collapse-item {
+.m-collapse-item {
   border: 1px solid $gray;
   margin: -1px;
   padding: 1em 1em;
@@ -57,7 +57,7 @@ $collapse-item-title-height: 36px;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
-  .collapse-item-title {
+  .m-collapse-item-title {
     height: $collapse-item-title-height;
     display: flex;
     align-items: center;
@@ -66,7 +66,7 @@ $collapse-item-title-height: 36px;
       border-bottom: 1px dashed $gray;
     }
   }
-  .collapse-item-content {
+  .m-collapse-item-content {
     display: flex;
     align-items: center;
   }
