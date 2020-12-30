@@ -8,7 +8,7 @@
 ---
 
 ```js
-import MInput from "minimalui";
+import { MInput } from "minimalui";
 export default {
   data() {
     return {

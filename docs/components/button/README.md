@@ -13,7 +13,7 @@ title: Button
 ---
 
 ``` js
-import MButton from "minimalui";
+import { MButton } from "minimalui";
 export default {
   data() {
     return {

@@ -55,7 +55,23 @@ module.exports = {
           {
             title: 'Layout',
             path: '/components/layout/'
-          }
+          },
+          {
+            title: 'Toast',
+            path: '/components/toast/'
+          },
+          {
+            title: 'Tabs',
+            path: '/components/tabs/'
+          },
+          {
+            title: 'Popover',
+            path: '/components/popover/'
+          },
+          {
+            title: 'Collapse',
+            path: '/components/collapse/'
+          },
         ],
         initialOpenGroupIndex: -1 // 可选的, 默认值是 0
       }
