@@ -59,8 +59,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$gray: #333;
-$border-radius: 6px;
+@import "../../css/var";
 .m-collapse {
   border: 1px solid $gray;
   border-radius: $border-radius;

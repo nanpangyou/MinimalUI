@@ -46,14 +46,7 @@ export default {
     transform: rotate(360deg);
   }
 }
-$button-size: 14px;
-$button-height: 32px;
-$button-font-color: #333;
-$button-bg: #fff;
-$button-radius: 4px;
-$button-border: 1px solid #888;
-$button-hover-border: 1px solid #222;
-$button-active-bg: #eee;
+@import "../../css/var";
 .m-button {
   font-size: $button-size;
   height: $button-height;

@@ -42,9 +42,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$gray: #333;
-$border-radius: 6px;
-$collapse-item-title-height: 36px;
+@import "../../css/var";
 .m-collapse-item {
   border: 1px solid $gray;
   margin: -1px;
