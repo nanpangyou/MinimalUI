@@ -1,5 +1,9 @@
 <template>
   <div>
+    <h1>Cascader</h1>
+    <div class="box">
+      <m-cascader :source="city1" />
+    </div>
     <h1>Collapse</h1>
     <div class="box">
       <m-collapse :selected.sync="selectedArr">
@@ -219,6 +223,7 @@
 </template>
 
 <script>
+import city from "../lib/city";
 import MButton from "../src/components/button/button";
 import MIcon from "../src/components/icon/icon";
 import MButtonGroup from "../src/components/button-group/button-group";
@@ -239,6 +244,8 @@ import MTabsPane from "../src/components/tabs/tabs-pane";
 import MPopover from "../src/components/popover/popover";
 import MCollapse from "../src/components/collapse/collapse";
 import MCollapseItem from "../src/components/collapse/collapse-item";
+import MCascader from "../src/components/cascader/cascader";
+import MCascaderItem from "../src/components/cascader/cascader-item";
 
 export default {
   name: "App",
@@ -262,15 +269,55 @@ export default {
     "m-popover": MPopover,
     "m-collapse": MCollapse,
     "m-collapse-item": MCollapseItem,
+    "m-cascader": MCascader,
+    "m-cascader-item": MCascaderItem,
   },
   data() {
     return {
+      city,
       loading1: false,
       loading2: false,
       loading3: false,
       message: "value2",
       selectedTab: "3",
       selectedArr: ["1", "2"],
+      city1: [
+        {
+          name: "aaa",
+          id: 1,
+          children: [
+            {
+              name: "ddd",
+              id: 4,
+              children: [
+                { name: "jjj", id: 10 },
+                { name: "kkk", id: 11 },
+                { name: "lll", id: 12 },
+              ],
+            },
+            {
+              name: "eee",
+              id: 5,
+              children: [
+                { name: "mmm", id: 13 },
+                { name: "nnn", id: 14 },
+                { name: "ooo", id: 15 },
+              ],
+            },
+            { name: "fff", id: 6 },
+          ],
+        },
+        {
+          name: "bbb",
+          id: 2,
+          children: [
+            { name: "ggg", id: 7 },
+            { name: "hhh", id: 8 },
+            { name: "iii", id: 9 },
+          ],
+        },
+        { name: "ccc", id: 3 },
+      ],
     };
   },
   mounted() {
