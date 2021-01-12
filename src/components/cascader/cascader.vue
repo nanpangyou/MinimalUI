@@ -1,10 +1,17 @@
 <template>
   <div class="m-cascader">
+    {{ selected.map((i) => i.name) }}
     <div class="trigger-wrapper">
-      <div class="trigger" @click="toggle"></div>
+      <div class="trigger" @click="toggle">
+        {{ selected.map((i) => i.name).join("/") }}
+      </div>
     </div>
     <div class="popover" v-if="isVisiable">
-      <m-cascader-item :source="source" />
+      <m-cascader-item
+        :source="source"
+        :selected="selected"
+        @update:selected="xxx"
+      />
     </div>
   </div>
 </template>
@@ -20,6 +27,10 @@ export default {
       type: Array,
       required: true,
     },
+    selected: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -29,6 +40,10 @@ export default {
   methods: {
     toggle() {
       this.isVisiable = !this.isVisiable;
+    },
+    xxx(copy) {
+      console.log(1, copy);
+      this.$emit("update:selected", copy);
     },
   },
 };
@@ -42,13 +57,16 @@ export default {
       border: 1px solid red;
       min-height: 30px;
       width: 180px;
+      display: flex;
+      align-items: center;
     }
   }
   .popover {
+    @extend .normal-box-shadow;
     position: absolute;
     top: 100%;
     left: 0;
-    border: 1px solid $gray;
+    // border: 1px solid $gray;
   }
 }
 </style>

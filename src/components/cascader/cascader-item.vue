@@ -1,5 +1,6 @@
 <template>
   <div class="m-cascader-item">
+    <!-- level:{{ level }} selected: {{ selected.map((i) => i.name) }} -->
     <div class="left">
       <ul class="level-wrapper">
         <li
@@ -8,49 +9,68 @@
           :key="item.id"
           @click="selectItem(item)"
         >
-          {{ item.name }}
+          <span>
+            {{ item.name }}
+          </span>
+          <m-icon class="icon" name="right" v-if="item.children"></m-icon>
         </li>
       </ul>
     </div>
-    <div class="right" v-if="selectedItem && selectedItem.children">
+    <div class="right" v-if="selectedItem">
       <m-cascader-item
-        :source="selectedItem.children"
-        :currentLevel="level + 1"
+        :source="selectedItem"
+        :level="level + 1"
+        @update:selected="xxx"
+        :selected="selected"
       ></m-cascader-item>
     </div>
   </div>
 </template>
 <script>
+import MIcon from "../icon/icon";
 export default {
   name: "MCascaderItem",
+  components: {
+    MIcon,
+  },
   props: {
     source: {
       type: Array,
       required: true,
     },
-    currentLevel: {
+    level: {
       type: Number,
+      default: 0,
+    },
+    selected: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
-    return {
-      selectedItem: {}, //选中的项
-      level: 0,
-    };
+    return {};
   },
   computed: {
-    selectedItemChildren() {
-      console.log(
-        "children",
-        this.selectedItem.id,
-        this.source.filter((i) => i.parent_id === this.selectedItem.id)
-      );
-      return this.source.filter((i) => i.parent_id === this.selectedItem.id);
+    selectedItem() {
+      let currentSelected = this.selected[this.level];
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children;
+      } else {
+        return null;
+      }
     },
   },
   methods: {
     selectItem(item) {
-      this.selectedItem = item;
+      const copy = JSON.parse(JSON.stringify(this.selected));
+      copy[this.level] = item;
+      copy.splice(this.level + 1);
+      console.log(copy);
+      this.$emit("update:selected", copy);
+    },
+    xxx(copy) {
+      console.log(1, copy);
+      this.$emit("update:selected", copy);
     },
   },
 };
@@ -69,13 +89,31 @@ export default {
     .level-wrapper {
       list-style: none;
       .level-item {
+        text-align: center;
+        cursor: pointer;
+        padding: 0.3em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &:first-child {
+          padding-top: 0.6em;
+        }
+        &:last-child {
+          padding-bottom: 0.6em;
+        }
+        &:hover {
+          background: #eee;
+        }
+        .icon {
+          margin-top: 4px;
+        }
       }
     }
   }
   .right {
     flex-shrink: 0;
     min-width: 80px;
-    border-left: 1px solid $gray;
+    border-left: 1px solid $border-color-light;
   }
 }
 </style>

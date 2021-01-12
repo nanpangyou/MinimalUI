@@ -2,7 +2,11 @@
   <div>
     <h1>Cascader</h1>
     <div class="box">
-      <m-cascader :source="city1" />
+      <m-cascader
+        :source="city1"
+        :selected="selectedCity"
+        @update:selected="x"
+      />
     </div>
     <h1>Collapse</h1>
     <div class="box">
@@ -318,6 +322,7 @@ export default {
         },
         { name: "ccc", id: 3 },
       ],
+      selectedCity: [],
     };
   },
   mounted() {
@@ -341,6 +346,10 @@ export default {
     },
     yyy() {
       console.log("yyy");
+    },
+    x(e) {
+      console.log(2, e);
+      this.selectedCity = e;
     },
   },
 };
