@@ -1,4 +1,6 @@
 $border-radius: 6px;
+$border-color: #333;
+$border-color-light: lighten($border-color,50%);
 $button-active-bg: #eee;
 $button-bg: #fff;
 $button-border: 1px solid #888;
@@ -10,3 +12,6 @@ $button-size: 14px;
 $collapse-item-title-height: 36px;
 $gray: #333;
 $cascader-height: 200px;
+.normal-box-shadow{
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+}
