@@ -13,6 +13,7 @@
             {{ item.name }}
           </span>
           <m-icon class="icon" name="right" v-if="item.children"></m-icon>
+          <m-icon class="icon" name="loading" v-if="item.loading"></m-icon>
         </li>
       </ul>
     </div>
@@ -65,7 +66,6 @@ export default {
       const copy = JSON.parse(JSON.stringify(this.selected));
       copy[this.level] = item;
       copy.splice(this.level + 1);
-      console.log(copy);
       this.$emit("update:selected", copy);
     },
     emitSelectedCopy(copy) {
@@ -77,13 +77,22 @@ export default {
 <style lang="scss" scoped>
 @import "../../css/var";
 .m-cascader-item {
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   height: $cascader-height;
   // border: 1px solid red;
-  overflow: auto;
   background: #fff;
   display: flex;
+  position: relative;
   .left {
     min-width: 80px;
+    overflow: auto;
     flex-shrink: 0;
     .level-wrapper {
       list-style: none;
@@ -105,6 +114,11 @@ export default {
         }
         .icon {
           margin-top: 4px;
+          &[name="loading"] {
+            animation: spin 2s infinite linear;
+            font-size: 223px;
+            fill: red;
+          }
         }
       }
     }
@@ -112,6 +126,7 @@ export default {
   .right {
     flex-shrink: 0;
     min-width: 80px;
+    overflow: auto;
     border-left: 1px solid $border-color-light;
   }
 }

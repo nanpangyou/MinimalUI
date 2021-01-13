@@ -31,6 +31,9 @@ export default {
       type: Array,
       default: () => [],
     },
+    loadData: {
+      type: Function,
+    },
   },
   data() {
     return {
@@ -43,6 +46,21 @@ export default {
     },
     emitSelectedCopy(copy) {
       this.$emit("update:selected", copy);
+      const lastItem = copy[copy.length - 1];
+      const updateSource = (data) => {
+        console.log("zxl");
+        if (data.length) {
+          const toUpdate = copy.filter((i) => i.id === lastItem.id)[0];
+          // this.$set(toUpdate, "loading", false);
+          this.$set(toUpdate, "children", data);
+        }
+      };
+      if (this.loadData && typeof this.loadData === "function") {
+        const toUpdate = copy.filter((i) => i.id === lastItem.id)[0];
+        console.log("xxx");
+        // this.$set(toUpdate, "loading", true);
+        this.loadData(lastItem, updateSource);
+      }
     },
   },
 };
