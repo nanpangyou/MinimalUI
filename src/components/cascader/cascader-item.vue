@@ -20,7 +20,7 @@
       <m-cascader-item
         :source="selectedItem"
         :level="level + 1"
-        @update:selected="xxx"
+        @update:selected="emitSelectedCopy"
         :selected="selected"
       ></m-cascader-item>
     </div>
@@ -68,8 +68,7 @@ export default {
       console.log(copy);
       this.$emit("update:selected", copy);
     },
-    xxx(copy) {
-      console.log(1, copy);
+    emitSelectedCopy(copy) {
       this.$emit("update:selected", copy);
     },
   },

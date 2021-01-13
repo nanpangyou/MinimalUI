@@ -10,7 +10,7 @@
       <m-cascader-item
         :source="source"
         :selected="selected"
-        @update:selected="xxx"
+        @update:selected="emitSelectedCopy"
       />
     </div>
   </div>
@@ -41,8 +41,7 @@ export default {
     toggle() {
       this.isVisiable = !this.isVisiable;
     },
-    xxx(copy) {
-      console.log(1, copy);
+    emitSelectedCopy(copy) {
       this.$emit("update:selected", copy);
     },
   },
