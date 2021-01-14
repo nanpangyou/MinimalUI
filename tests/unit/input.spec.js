@@ -53,7 +53,7 @@ describe("Input.vue", () => {
                     error: "you are wrong"
                 }
             });
-            const errorIconElement = wrapper.find(".icon");
+            const errorIconElement = wrapper.find(".m-icon");
             expect(
                 errorIconElement.find('use').attributes()['href']
             ).to.equal("#i-error");

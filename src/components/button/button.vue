@@ -77,14 +77,14 @@ export default {
     > .button-text {
       order: 2;
     }
-    > .icon {
+    > .m-icon {
       order: 1;
       margin-right: 0.3em;
     }
   }
 
   &.icon-right {
-    > .icon {
+    > .m-icon {
       order: 2;
     }
     > .button-text {

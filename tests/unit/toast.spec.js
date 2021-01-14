@@ -84,7 +84,7 @@ describe("Toast", () => {
                 }
             })
             setTimeout(() => {
-                expect(wrapper.find(".wrapper").classes()).contains('position-bottom')
+                expect(wrapper.find(".m-toast").classes()).contains('position-bottom')
                 done();
             }, 0)
         })
@@ -99,7 +99,7 @@ describe("Toast", () => {
                 }
             })
             setTimeout(() => {
-                expect(wrapper.find(".wrapper").classes()).contains('position-middle')
+                expect(wrapper.find(".m-toast").classes()).contains('position-middle')
                 done();
             }, 0)
         })
