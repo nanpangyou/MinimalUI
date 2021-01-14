@@ -1,12 +1,14 @@
 <template>
   <div>
     <h1>Cascader</h1>
+    <m-button @click="addData">添加数据</m-button>
     <div class="box">
       <m-cascader
-        :source="city1"
-        :selected="selectedCity"
-        @update:selected="x"
+        :source.sync="city1"
+        :selected.sync="selectedCity"
+        :loadData="loadData"
       />
+      <m-cascader :source.sync="city1" :selected.sync="selectedCity" />
     </div>
     <h1>Collapse</h1>
     <div class="box">
@@ -27,7 +29,6 @@
         overflow: hidden;
         border-radius: 3px;
       "
-      @click="yyy"
     >
       <m-popover position="top">
         <m-button slot="reference">点击</m-button>
@@ -251,6 +252,22 @@ import MCollapseItem from "../src/components/collapse/collapse-item";
 import MCascader from "../src/components/cascader/cascader";
 import MCascaderItem from "../src/components/cascader/cascader-item";
 
+function ajax(parentId = 0, success, fail) {
+  const result = city.filter((i) => i.parent_id === parentId);
+  const timeId = setTimeout(() => {
+    success(result);
+  }, 1000);
+  return timeId;
+}
+function promiseAjax(parentId = 0) {
+  return new Promise((resolve, reject) => {
+    const result = city.filter((i) => i.parent_id === parentId);
+    setTimeout(() => {
+      resolve(result);
+    }, 1000);
+  });
+}
+
 export default {
   name: "App",
   components: {
@@ -325,9 +342,7 @@ export default {
       selectedCity: [],
     };
   },
-  mounted() {
-    this.$toast("我是 toast", { position: "middle" });
-  },
+  mounted() {},
   methods: {
     showToast1() {
       this.showToast("top");
@@ -344,12 +359,31 @@ export default {
         // enableHTML: true,
       });
     },
-    yyy() {
-      console.log("yyy");
+    addData() {
+      ajax(0, (data) => {
+        this.city1 = data;
+      });
+    },
+    loadData(selectedData, callback) {
+      const { id } = selectedData;
+      ajax(id, (data) => {
+        callback(data);
+      });
     },
     x(e) {
-      console.log(2, e);
-      this.selectedCity = e;
+      // console.log(2, this.city1, e);
+      // ajax(e[0].id, (data) => {
+      //   console.log(
+      //     this.city1.filter((i) => i.parent_id === e[0].id),
+      //     this.city1,
+      //     e[0].id
+      //   );
+      //   this.$set(
+      //     this.city1.filter((i) => i.parent_id === e[0].id)[0].children,
+      //     data
+      //   );
+      //   console.log(data);
+      // });
     },
   },
 };

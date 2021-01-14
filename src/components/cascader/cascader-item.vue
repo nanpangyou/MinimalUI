@@ -53,11 +53,19 @@ export default {
   },
   computed: {
     selectedItem() {
-      let currentSelected = this.selected[this.level];
-      if (currentSelected && currentSelected.children) {
-        return currentSelected.children;
-      } else {
-        return null;
+      if (this.selected[this.level]) {
+        // let currentSelected = this.source.filter(
+        //   (i) => i.name === this.selected[this.level].name
+        // );
+        // console.log(this.source);
+
+        // selectedItem是根据this.selected和this.level计算而来的，如果它们不发生变化则取缓存，不会更新，否则可以使用上面的方式，根据source来计算
+        let currentSelected = this.selected[this.level];
+        if (currentSelected && currentSelected.children) {
+          return currentSelected.children;
+        } else {
+          return null;
+        }
       }
     },
   },
