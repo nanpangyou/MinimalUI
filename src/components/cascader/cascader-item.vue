@@ -19,7 +19,7 @@
           <m-icon
             class="icon loading"
             name="loading"
-            v-if="loadingItem.id === item.id"
+            v-if="loadingItem.id === item.id && !item.isLeaf"
           ></m-icon>
         </li>
       </ul>
