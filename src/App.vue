@@ -255,6 +255,11 @@ import MCascaderItem from "../src/components/cascader/cascader-item";
 function ajax(parentId = 0, success, fail) {
   const result = city.filter((i) => i.parent_id === parentId);
   const timeId = setTimeout(() => {
+    result.map((node) => {
+      city.filter((i) => i.parent_id === node.id).length
+        ? (node.isLeaf = false)
+        : (node.isLeaf = true);
+    });
     success(result);
   }, 300);
   return timeId;
@@ -263,6 +268,11 @@ function promiseAjax(parentId = 0) {
   return new Promise((resolve, reject) => {
     const result = city.filter((i) => i.parent_id === parentId);
     setTimeout(() => {
+      result.map((node) => {
+        city.filter((i) => i.parent_id === node.id).length
+          ? (node.isLeaf = false)
+          : (node.isLeaf = true);
+      });
       resolve(result);
     }, 300);
   });

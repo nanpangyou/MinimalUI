@@ -9,6 +9,7 @@
       <m-cascader-item
         :source="source"
         :selected="selected"
+        :loading-item="loadingItem"
         @update:selected="emitSelectedCopy"
         @selected-done="close"
       />
@@ -39,6 +40,7 @@ export default {
   data() {
     return {
       isVisiable: false,
+      loadingItem: {},
     };
   },
   directives: {
@@ -60,15 +62,51 @@ export default {
     },
     emitSelectedCopy(copy) {
       const lastItem = copy[copy.length - 1];
+      // 递归查找选中的item在source中的位置
+      let simplest = (children, id) => {
+        return children.filter((item) => item.id === id)[0];
+      };
+      let complex = (children, id) => {
+        let noChildren = [];
+        let hasChildren = [];
+        children.forEach((item) => {
+          if (item.children) {
+            hasChildren.push(item);
+          } else {
+            noChildren.push(item);
+          }
+        });
+        let found = simplest(noChildren, id);
+        if (found) {
+          return found;
+        } else {
+          found = simplest(hasChildren, id);
+          if (found) {
+            return found;
+          } else {
+            for (let i = 0; i < hasChildren.length; i++) {
+              found = complex(hasChildren[i].children, id);
+              if (found) {
+                return found;
+              }
+            }
+            return undefined;
+          }
+        }
+      };
       const updateSource = (data) => {
         if (data.length) {
-          const toUpdate = copy.filter((i) => i.id === lastItem.id)[0];
+          let copy = JSON.parse(JSON.stringify(this.source));
+          let toUpdate = complex(copy, lastItem.id);
           toUpdate.children = data;
-          this.$emit("update:selected", JSON.parse(JSON.stringify(copy)));
+          this.$emit("update:source", copy);
+          this.loadingItem = {};
         }
       };
       if (this.loadData && typeof this.loadData === "function") {
+        this.$emit("update:selected", copy);
         this.loadData(lastItem, updateSource);
+        this.loadingItem = lastItem;
       } else {
         this.$emit("update:selected", copy);
       }

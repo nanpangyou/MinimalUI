@@ -1,6 +1,5 @@
 <template>
   <div class="m-cascader-item">
-    <!-- level:{{ level }} selected: {{ selected.map((i) => i.name) }} -->
     <div class="left">
       <ul class="level-wrapper">
         <li
@@ -12,7 +11,16 @@
           <span>
             {{ item.name }}
           </span>
-          <m-icon class="icon" name="right" v-if="item.children"></m-icon>
+          <m-icon
+            class="icon"
+            name="right"
+            v-if="!item.isLeaf && loadingItem.id !== item.id"
+          ></m-icon>
+          <m-icon
+            class="icon loading"
+            name="loading"
+            v-if="loadingItem.id === item.id"
+          ></m-icon>
         </li>
       </ul>
     </div>
@@ -20,9 +28,10 @@
       <m-cascader-item
         :source="selectedItem"
         :level="level + 1"
+        :selected="selected"
+        :loading-item="loadingItem"
         @update:selected="emitSelectedCopy"
         @selected-done="emitSelectedDone"
-        :selected="selected"
       ></m-cascader-item>
     </div>
   </div>
@@ -47,6 +56,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    loadingItem: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {};
@@ -54,13 +67,11 @@ export default {
   computed: {
     selectedItem() {
       if (this.selected[this.level]) {
-        // let currentSelected = this.source.filter(
-        //   (i) => i.name === this.selected[this.level].name
-        // );
-        // console.log(this.source);
-
+        let currentSelected = this.source.filter(
+          (i) => i.name === this.selected[this.level].name
+        )[0];
         // selectedItem是根据this.selected和this.level计算而来的，如果它们不发生变化则取缓存，不会更新，否则可以使用上面的方式，根据source来计算
-        let currentSelected = this.selected[this.level];
+        // let currentSelected = this.selected[this.level];
         if (currentSelected && currentSelected.children) {
           return currentSelected.children;
         } else {
@@ -128,10 +139,11 @@ export default {
         }
         .icon {
           margin-top: 4px;
-          &[name="loading"] {
-            animation: spin 2s infinite linear;
-            font-size: 223px;
-            fill: red;
+          margin-left: 1em;
+          transform: scale(0.6);
+          &.loading {
+            transform: scale(0.6);
+            animation: spin 2s linear infinite;
           }
         }
       }
