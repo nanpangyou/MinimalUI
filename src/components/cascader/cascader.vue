@@ -64,7 +64,7 @@ export default {
         if (data.length) {
           const toUpdate = copy.filter((i) => i.id === lastItem.id)[0];
           toUpdate.children = data;
-          this.$emit("update:source", JSON.parse(JSON.stringify(copy)));
+          this.$emit("update:selected", JSON.parse(JSON.stringify(copy)));
         }
       };
       if (this.loadData && typeof this.loadData === "function") {

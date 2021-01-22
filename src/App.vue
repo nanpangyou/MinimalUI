@@ -4,11 +4,11 @@
     <m-button @click="addData">添加数据</m-button>
     <div class="box">
       <m-cascader
-        :source.sync="city1"
-        :selected.sync="selectedCity"
+        :source.sync="city2"
+        :selected.sync="selectedCity2"
         :loadData="loadData"
       />
-      <m-cascader :source.sync="city1" :selected.sync="selectedCity" />
+      <m-cascader :source.sync="city1" :selected.sync="selectedCity1" />
     </div>
     <h1>Collapse</h1>
     <div class="box">
@@ -256,7 +256,7 @@ function ajax(parentId = 0, success, fail) {
   const result = city.filter((i) => i.parent_id === parentId);
   const timeId = setTimeout(() => {
     success(result);
-  }, 1000);
+  }, 300);
   return timeId;
 }
 function promiseAjax(parentId = 0) {
@@ -264,7 +264,7 @@ function promiseAjax(parentId = 0) {
     const result = city.filter((i) => i.parent_id === parentId);
     setTimeout(() => {
       resolve(result);
-    }, 1000);
+    }, 300);
   });
 }
 
@@ -306,40 +306,46 @@ export default {
         {
           name: "aaa",
           id: 1,
+          isLeaf: false,
           children: [
             {
               name: "ddd",
               id: 4,
+              isLeaf: false,
               children: [
-                { name: "jjj", id: 10 },
-                { name: "kkk", id: 11 },
-                { name: "lll", id: 12 },
+                { name: "jjj", id: 10, isLeaf: true },
+                { name: "kkk", id: 11, isLeaf: true },
+                { name: "lll", id: 12, isLeaf: true },
               ],
             },
             {
               name: "eee",
               id: 5,
+              isLeaf: false,
               children: [
-                { name: "mmm", id: 13 },
-                { name: "nnn", id: 14 },
-                { name: "ooo", id: 15 },
+                { name: "mmm", id: 13, isLeaf: true },
+                { name: "nnn", id: 14, isLeaf: true },
+                { name: "ooo", id: 15, isLeaf: true },
               ],
             },
-            { name: "fff", id: 6 },
+            { name: "fff", id: 6, isLeaf: true },
           ],
         },
         {
           name: "bbb",
           id: 2,
+          isLeaf: false,
           children: [
-            { name: "ggg", id: 7 },
-            { name: "hhh", id: 8 },
-            { name: "iii", id: 9 },
+            { name: "ggg", id: 7, isLeaf: true },
+            { name: "hhh", id: 8, isLeaf: true },
+            { name: "iii", id: 9, isLeaf: true },
           ],
         },
-        { name: "ccc", id: 3 },
+        { name: "ccc", id: 3, isLeaf: true },
       ],
-      selectedCity: [],
+      selectedCity1: [],
+      city2: [],
+      selectedCity2: [],
     };
   },
   mounted() {},
@@ -361,7 +367,7 @@ export default {
     },
     addData() {
       ajax(0, (data) => {
-        this.city1 = data;
+        this.city2 = data;
       });
     },
     loadData(selectedData, callback) {

@@ -13,7 +13,6 @@
             {{ item.name }}
           </span>
           <m-icon class="icon" name="right" v-if="item.children"></m-icon>
-          <m-icon class="icon" name="loading" v-if="item.loading"></m-icon>
         </li>
       </ul>
     </div>
@@ -22,6 +21,7 @@
         :source="selectedItem"
         :level="level + 1"
         @update:selected="emitSelectedCopy"
+        @selected-done="emitSelectedDone"
         :selected="selected"
       ></m-cascader-item>
     </div>
@@ -75,9 +75,15 @@ export default {
       copy[this.level] = item;
       copy.splice(this.level + 1);
       this.$emit("update:selected", copy);
+      if (item.isLeaf) {
+        this.$emit("selected-done");
+      }
     },
     emitSelectedCopy(copy) {
       this.$emit("update:selected", copy);
+    },
+    emitSelectedDone() {
+      this.$emit("selected-done");
     },
   },
 };
