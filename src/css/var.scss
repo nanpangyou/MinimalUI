@@ -19,3 +19,11 @@ $font-color: #333;
 .wight-box-shadow{
     box-shadow: 0 0 5px rgba(0,0,0,0.45);
 }
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
