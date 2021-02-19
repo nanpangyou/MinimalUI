@@ -20,21 +20,30 @@ export default {
     }
     this.updateChildrenSelected();
   },
+  computed: {
+    getSelectedItem() {
+      console.log(111, this.selected);
+      return this.selected || this.$children[0].name;
+    },
+  },
   methods: {
     autoPlay() {
-      const childrenNames = this.getChildrenNames();
-      const currentIndex = childrenNames.indexOf(this.getSelectedItem());
-      const childrenLength = childrenNames.length;
       const play = () => {
+        const childrenNames = this.getChildrenNames();
+        console.log(222, this.selected);
+        let currentIndex = childrenNames.indexOf(this.getSelectedItem);
+        const childrenLength = childrenNames.length;
         setTimeout(() => {
           console.log(currentIndex, childrenLength);
           if (currentIndex === childrenLength - 1) {
             currentIndex = -1;
             console.log(1111);
           }
+          console.log(childrenNames[currentIndex]);
           const newCurrentIndex = currentIndex + 1;
           console.log(childrenNames[newCurrentIndex]);
           this.$emit("update:selected", childrenNames[newCurrentIndex]);
+          this.updateChildrenSelected();
           play();
         }, 1500);
       };
@@ -43,12 +52,10 @@ export default {
     getChildrenNames() {
       return this.$children.map((vm) => vm.name);
     },
-    getSelectedItem() {
-      return this.selected || this.$children[0].name;
-    },
+
     updateChildrenSelected() {
       this.$children.forEach((vm) => {
-        vm.selected = this.getSelectedItem();
+        vm.selected = this.getSelectedItem;
       });
     },
   },
