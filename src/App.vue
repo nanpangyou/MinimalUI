@@ -1,5 +1,15 @@
 <template>
   <div>
+    <h1>Carousel</h1>
+    <div style="margin: 10px 0">
+      <m-carousel :selected.sync="carouselSelected" :enableAutoPlay="true">
+        <m-carousel-item :name="'info'">info</m-carousel-item>
+        <m-carousel-item :name="'sport'">sport</m-carousel-item>
+        <m-carousel-item :name="'finance'">finance</m-carousel-item>
+        <m-carousel-item :name="'other'">other</m-carousel-item>
+      </m-carousel>
+    </div>
+    <hr />
     <h1>Cascader</h1>
     <m-button @click="addData">添加数据</m-button>
     <div class="box">
@@ -251,6 +261,8 @@ import MCollapse from "../src/components/collapse/collapse";
 import MCollapseItem from "../src/components/collapse/collapse-item";
 import MCascader from "../src/components/cascader/cascader";
 import MCascaderItem from "../src/components/cascader/cascader-item";
+import MCarousel from "../src/components/carousel/carousel";
+import MCarouselItem from "../src/components/carousel/carousel-item";
 
 function ajax(parentId = 0, success, fail) {
   const result = city.filter((i) => i.parent_id === parentId);
@@ -302,7 +314,10 @@ export default {
     "m-collapse-item": MCollapseItem,
     "m-cascader": MCascader,
     "m-cascader-item": MCascaderItem,
+    "m-carousel": MCarousel,
+    "m-carousel-item": MCarouselItem,
   },
+
   data() {
     return {
       city,
@@ -356,6 +371,7 @@ export default {
       selectedCity1: [],
       city2: [],
       selectedCity2: [],
+      carouselSelected: "finance",
     };
   },
   mounted() {},
