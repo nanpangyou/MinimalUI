@@ -1,5 +1,9 @@
 <template>
-  <div class="m-carousel">
+  <div
+    class="m-carousel"
+    @mouseenter="stopAutoPlay"
+    @mouseleave="startAutoPlay"
+  >
     <slot></slot>
   </div>
 </template>
@@ -35,6 +39,18 @@ export default {
     },
   },
   methods: {
+    stopAutoPlay() {
+      // 鼠标移入时取消自动播放
+      if (this.timeId) {
+        window.clearTimeout(this.timeId);
+      }
+    },
+    startAutoPlay() {
+      // 鼠标移出时添加自动播放
+      if (this.enableAutoPlay) {
+        this.autoPlay();
+      }
+    },
     autoPlay() {
       const play = () => {
         const childrenNames = this.getChildrenNames();
