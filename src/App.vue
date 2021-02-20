@@ -4,14 +4,23 @@
     <div style="margin: 10px 0">
       {{ carouselSelected }}
       <m-carousel
+        style="width: 50%; margin: 0 auto"
         :selected.sync="carouselSelected"
         :enableAutoPlay="true"
         :autoPlayDelay="3000"
       >
-        <m-carousel-item :name="'info'">info</m-carousel-item>
-        <m-carousel-item :name="'sport'">sport</m-carousel-item>
-        <m-carousel-item :name="'finance'">finance</m-carousel-item>
-        <m-carousel-item :name="'other'">other</m-carousel-item>
+        <m-carousel-item :name="'info'">
+          <div class="xx-box">info</div>
+        </m-carousel-item>
+        <m-carousel-item :name="'sport'">
+          <div class="xx-box">sport</div>
+        </m-carousel-item>
+        <m-carousel-item :name="'finance'"
+          ><div class="xx-box">finance</div>
+        </m-carousel-item>
+        <m-carousel-item :name="'other'"
+          ><div class="xx-box">other</div>
+        </m-carousel-item>
       </m-carousel>
     </div>
     <hr />
@@ -376,7 +385,7 @@ export default {
       selectedCity1: [],
       city2: [],
       selectedCity2: [],
-      carouselSelected: "finance",
+      carouselSelected: "other",
     };
   },
   mounted() {},
@@ -427,4 +436,13 @@ export default {
 </script>
 
 <style lang="scss">
+.xx-box {
+  background: maroon;
+  color: #fff;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

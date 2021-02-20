@@ -66,8 +66,7 @@ export default {
 </script>
 <style lang="scss">
 .m-carousel {
-  border: 1px solid red;
   overflow: hidden;
-  display: flex;
+  position: relative;
 }
 </style>

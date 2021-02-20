@@ -1,7 +1,9 @@
 <template>
-  <div class="m-carousel-item" v-if="isVisiable">
-    <slot></slot>
-  </div>
+  <transition name="slide" mode="in-out">
+    <div class="m-carousel-item" v-if="isVisiable">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 <script>
 export default {
@@ -27,13 +29,20 @@ export default {
 </script>
 <style lang="scss">
 @import "../../css/var";
-.m-carousel-item {
-  height: $carousel-item-height;
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 1s;
+}
+.slide-leave-active {
+  position: absolute;
   width: 100%;
-  border: 1px solid $gray;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  top: 0;
+}
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-leave-to {
+  transform: translateX(-100%);
 }
 </style>
