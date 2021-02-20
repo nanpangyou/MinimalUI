@@ -21,6 +21,10 @@ export default {
       type: Number | String,
       default: undefined,
     },
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -56,10 +60,18 @@ export default {
         const childrenNames = this.getChildrenNames();
         let currentIndex = childrenNames.indexOf(this.getSelectedItem);
         const childrenLength = childrenNames.length;
-        if (currentIndex === childrenLength - 1) {
-          currentIndex = -1;
+        let newCurrentIndex;
+        if (!this.reverse) {
+          if (currentIndex === childrenLength - 1) {
+            currentIndex = -1;
+          }
+          newCurrentIndex = currentIndex + 1;
+        } else {
+          if (currentIndex === 0) {
+            currentIndex = childrenLength;
+          }
+          newCurrentIndex = currentIndex - 1;
         }
-        const newCurrentIndex = currentIndex + 1;
         this.$emit("update:selected", childrenNames[newCurrentIndex]);
         this.updateChildrenSelected();
         this.timeId = setTimeout(play, this.autoPlayDelay || 1500);
@@ -74,6 +86,7 @@ export default {
       this.$nextTick(() => {
         this.$children.forEach((vm) => {
           vm.selected = this.getSelectedItem;
+          vm.reverse = this.reverse;
         });
       });
     },

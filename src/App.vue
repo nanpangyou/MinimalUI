@@ -8,18 +8,19 @@
         :selected.sync="carouselSelected"
         :enableAutoPlay="true"
         :autoPlayDelay="3000"
+        :reverse="true"
       >
         <m-carousel-item :name="'info'">
-          <div class="xx-box">info</div>
+          <div class="xx-box">1info</div>
         </m-carousel-item>
         <m-carousel-item :name="'sport'">
-          <div class="xx-box">sport</div>
+          <div class="xx-box">2sport</div>
         </m-carousel-item>
         <m-carousel-item :name="'finance'"
-          ><div class="xx-box">finance</div>
+          ><div class="xx-box">3finance</div>
         </m-carousel-item>
         <m-carousel-item :name="'other'"
-          ><div class="xx-box">other</div>
+          ><div class="xx-box">4other</div>
         </m-carousel-item>
       </m-carousel>
     </div>

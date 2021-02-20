@@ -1,6 +1,6 @@
 <template>
   <transition name="slide" mode="in-out">
-    <div class="m-carousel-item" v-if="isVisiable">
+    <div class="m-carousel-item" v-if="isVisiable" :class="{ reverse }">
       <slot></slot>
     </div>
   </transition>
@@ -17,6 +17,7 @@ export default {
   data() {
     return {
       selected: undefined,
+      reverse: undefined,
     };
   },
   mounted() {},
@@ -38,6 +39,12 @@ export default {
   width: 100%;
   height: 100%;
   top: 0;
+}
+.slide-enter.reverse {
+  transform: translateX(-100%);
+}
+.slide-leave-to.reverse {
+  transform: translateX(100%);
 }
 .slide-enter {
   transform: translateX(100%);
