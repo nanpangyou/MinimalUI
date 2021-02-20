@@ -3,7 +3,11 @@
     <h1>Carousel</h1>
     <div style="margin: 10px 0">
       {{ carouselSelected }}
-      <m-carousel :selected.sync="carouselSelected" :enableAutoPlay="true">
+      <m-carousel
+        :selected.sync="carouselSelected"
+        :enableAutoPlay="true"
+        :autoPlayDelay="3000"
+      >
         <m-carousel-item :name="'info'">info</m-carousel-item>
         <m-carousel-item :name="'sport'">sport</m-carousel-item>
         <m-carousel-item :name="'finance'">finance</m-carousel-item>

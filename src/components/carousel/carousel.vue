@@ -13,6 +13,15 @@ export default {
     enableAutoPlay: {
       type: Boolean,
     },
+    autoPlayDelay: {
+      type: Number | String,
+      default: undefined,
+    },
+  },
+  data() {
+    return {
+      timeId: undefined,
+    };
   },
   mounted() {
     if (this.enableAutoPlay) {
@@ -22,7 +31,6 @@ export default {
   },
   computed: {
     getSelectedItem() {
-      console.log(111, this.selected);
       return this.selected || this.$children[0].name;
     },
   },
@@ -30,32 +38,27 @@ export default {
     autoPlay() {
       const play = () => {
         const childrenNames = this.getChildrenNames();
-        console.log(222, this.selected);
         let currentIndex = childrenNames.indexOf(this.getSelectedItem);
         const childrenLength = childrenNames.length;
-        setTimeout(() => {
-          console.log(currentIndex, childrenLength);
-          if (currentIndex === childrenLength - 1) {
-            currentIndex = -1;
-            console.log(1111);
-          }
-          console.log(childrenNames[currentIndex]);
-          const newCurrentIndex = currentIndex + 1;
-          console.log(childrenNames[newCurrentIndex]);
-          this.$emit("update:selected", childrenNames[newCurrentIndex]);
-          this.updateChildrenSelected();
-          play();
-        }, 1500);
+        if (currentIndex === childrenLength - 1) {
+          currentIndex = -1;
+        }
+        const newCurrentIndex = currentIndex + 1;
+        this.$emit("update:selected", childrenNames[newCurrentIndex]);
+        this.updateChildrenSelected();
+        this.timeId = setTimeout(play, this.autoPlayDelay || 1500);
       };
-      play();
+      this.timeId = setTimeout(play, this.autoPlayDelay || 1500);
     },
     getChildrenNames() {
       return this.$children.map((vm) => vm.name);
     },
 
     updateChildrenSelected() {
-      this.$children.forEach((vm) => {
-        vm.selected = this.getSelectedItem;
+      this.$nextTick(() => {
+        this.$children.forEach((vm) => {
+          vm.selected = this.getSelectedItem;
+        });
       });
     },
   },
