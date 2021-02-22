@@ -101,6 +101,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../css/var";
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
 .m-cascader-item {
   @keyframes spin {
     0% {

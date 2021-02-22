@@ -72,6 +72,14 @@ module.exports = {
             title: 'Collapse',
             path: '/components/collapse/'
           },
+          {
+            title: 'Cascader',
+            path: '/components/cascader/'
+          },
+          {
+            title: 'Carousel',
+            path: '/components/carousel/'
+          },
         ],
         initialOpenGroupIndex: -1 // 可选的, 默认值是 0
       }
