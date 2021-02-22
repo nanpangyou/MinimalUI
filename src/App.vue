@@ -2,13 +2,12 @@
   <div>
     <h1>Carousel</h1>
     <div style="margin: 10px 0">
-      {{ carouselSelected }}
       <m-carousel
         style="width: 50%; margin: 0 auto"
         :selected.sync="carouselSelected"
         :enableAutoPlay="true"
         :autoPlayDelay="3000"
-        :reverse="true"
+        :nav="true"
       >
         <m-carousel-item :name="'info'">
           <div class="xx-box">1info</div>
@@ -438,7 +437,7 @@ export default {
 
 <style lang="scss">
 .xx-box {
-  background: maroon;
+  background: #aaa;
   color: #fff;
   height: 200px;
   width: 100%;
