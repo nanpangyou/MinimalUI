@@ -252,7 +252,7 @@
 </template>
 
 <script>
-import city from "../lib/city";
+import city from "../tests/fixtures/city";
 import MButton from "../src/components/button/button";
 import MIcon from "../src/components/icon/icon";
 import MButtonGroup from "../src/components/button-group/button-group";

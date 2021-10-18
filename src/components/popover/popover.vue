@@ -47,7 +47,7 @@ export default {
       this.$refs.triggerWrapper.addEventListener("mouseleave", this.onHide);
     }
   },
-  destroyed() {
+  beforeDestroy() {
     if (this.trigger === "click") {
       this.$refs.triggerWrapper.removeListener("click", this.onClick);
     } else if (this.trigger === "hover") {

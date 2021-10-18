@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import city from "../../../../lib/city";
+import city from "../../../../tests/fixtures/city";
 import MCascader from "../../../../src/components/cascader/cascader";
 import MCascaderItem from "../../../../src/components/cascader/cascader-item";
 function ajax(parentId = 0, success, fail) {
